@@ -1,0 +1,31 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>Assets/Tcr Logo.png</file>
+        <file>Components/Button.qml</file>
+        <file>Components/InputBox.qml</file>
+        <file>Components/FuncButton.qml</file>
+        <file>Screens/LoginPage.qml</file>
+        <file>Assets/Icons/BackArrowIcon.png</file>
+        <file>Assets/Icons/Down_Arrow.png</file>
+        <file>Assets/Icons/Graph.png</file>
+        <file>Assets/Icons/NextArrowIcon.png</file>
+        <file>Assets/Icons/Result.png</file>
+        <file>Assets/Icons/SignOut.png</file>
+        <file>Assets/Icons/SlotTray.png</file>
+        <file>Assets/Icons/system_update_alt 2.png</file>
+        <file>Assets/Icons/TestIcon.png</file>
+        <file>Assets/Icons/translation 1.png</file>
+        <file>Assets/Icons/UpdateIcon.png</file>
+        <file>Screens/Settings_Wifi.qml</file>
+        <file>Assets/Icons/Settings.png</file>
+        <file>Assets/Icons/languageIcon.png</file>
+        <file>Assets/Icons/TimezoneIcon.png</file>
+        <file>Assets/Icons/UpdateIconActive.png</file>
+        <file>Components/SettingsItem.qml</file>
+        <file>Assets/Icons/Wifi_signal25.png</file>
+        <file>Assets/Icons/Wifi_signal75.png</file>
+        <file>Assets/Icons/signal_wifi_4_bar_lock 1.png</file>
+        <file>Assets/Icons/WifiIcon.png</file>
+    </qresource>
+</RCC>
