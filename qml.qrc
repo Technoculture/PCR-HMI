@@ -27,5 +27,6 @@
         <file>Assets/Icons/Wifi_signal75.png</file>
         <file>Assets/Icons/signal_wifi_4_bar_lock 1.png</file>
         <file>Assets/Icons/WifiIcon.png</file>
+        <file>Assets/Icons/SettingsActive.png</file>
     </qresource>
 </RCC>

@@ -22,6 +22,7 @@ Item {
             id: label
             font.pixelSize: labelFontSize
             color: textColor
+            font.family: "Work Sans Medium"
             anchors.left: icon.right
             anchors.verticalCenter: icon.verticalCenter
         }

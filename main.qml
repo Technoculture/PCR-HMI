@@ -9,11 +9,13 @@ Window {
     height: 480
     visible: true
     title: "PCR"
-//    LoginPage{
-//        id: login
-//        anchors.centerIn: parent
-//    }
+    LoginPage{
+        id: login
+        anchors.fill: parent
+    }
     Settings_Wifi{
+        id: settingsPage
+        visible: false
         anchors.fill: parent
     }
 }

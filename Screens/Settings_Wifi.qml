@@ -32,14 +32,16 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "BackArrowIcon.png"
+                            onClicked: settingsPage.visible=false
                         }
-                        FuncButton{
+                        Text {
                             id: settings
-                            height: logo.height
                             text: "Settings"
-                            textColor: "#475569"
-                            labelFontSize: 16
-                            iconSource: "Settings.png"
+                            font.family: "Work Sans Medium"
+                            font.pixelSize: 16
+                            color: "#475569"
+                            height: logo.height
+                            padding: 10
                         }
                     }
                     Image {
@@ -126,7 +128,8 @@ Item {
                                     text: "Available Networks"
                                     leftPadding: 10
                                     topPadding: 3
-                                    font.letterSpacing: 0.6
+                                    font.letterSpacing: 0.5
+                                    font.family: "Work Sans Medium"
                                 }
                             }
                             Rectangle{
@@ -165,8 +168,8 @@ Item {
                                     id: list2
                                     width: 147
                                     height: 42
-                                    headText: "SuperFiber"
-                                    bodyText: "Connected"
+                                    headText: "Fast Fiber"
+                                    bodyText: "Secured"
                                     iconSource: "Wifi_signal75"
                                     textColor: "#334155"
                                 }
@@ -174,7 +177,7 @@ Item {
                                     id: connectbut2
                                     width: 89
                                     height: 24
-                                    text: "Disconnect"
+                                    text: "Connect"
                                     labelFontSize: 12
                                     anchors.left: list2.right
                                     anchors.verticalCenter: list2.verticalCenter
@@ -191,8 +194,8 @@ Item {
                                     id: list3
                                     width: 147
                                     height: 42
-                                    headText: "SuperFiber"
-                                    bodyText: "Connected"
+                                    headText: "WorkWifi"
+                                    bodyText: "Secured"
                                     iconSource: "Wifi_signal25"
                                     textColor: "#334155"
                                 }
@@ -200,7 +203,7 @@ Item {
                                     id: connectbut3
                                     width: 89
                                     height: 24
-                                    text: "Disconnect"
+                                    text: "Connect"
                                     labelFontSize: 12
                                     anchors.left: list3.right
                                     anchors.verticalCenter: list3.verticalCenter
@@ -224,8 +227,9 @@ Item {
                                     text: "Update OS"
                                     leftPadding: 10
                                     topPadding: 3
-                                    font.letterSpacing: 0.8
+                                    font.letterSpacing: 0.6
                                     color: "#475569"
+                                    font.family: "Work Sans Medium"
                                 }
                             }
                             Rectangle{
@@ -240,6 +244,7 @@ Item {
                                     topPadding: 10
                                     font.letterSpacing: 0.8
                                     color: "#64748B"
+                                    font.family: "Work Sans Medium"
                                 }
                             }
                             Button{
@@ -266,8 +271,9 @@ Item {
                                     text: "Choose Language"
                                     leftPadding: 10
                                     topPadding: 3
-                                    font.letterSpacing: 0.8
+                                    font.letterSpacing: 0.6
                                     color: "#475569"
+                                    font.family: "Work Sans Medium"
                                 }
                             }
                             ComboBox {
@@ -299,8 +305,9 @@ Item {
                                     text: "Change Timezone"
                                     leftPadding: 10
                                     topPadding: 3
-                                    font.letterSpacing: 0.8
+                                    font.letterSpacing: 0.6
                                     color: "#475569"
+                                    font.family: "Work Sans Medium"
                                 }
                             }
                             ComboBox {

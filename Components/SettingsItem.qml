@@ -27,15 +27,19 @@ Item {
                 font.pixelSize: 14
                 color: textColor
                 padding: 3
+                font.family: "Work Sans Medium"
                 leftPadding: 19
+                font.letterSpacing: 0.3
             }
             Text {
                 id: body
                 font.pixelSize: 12
-                color: "#334155"
+                color: "#475569"
                 anchors.top: head.bottom
                 padding: 3
+                font.family: "Work Sans Regular"
                 leftPadding: 19
+                font.letterSpacing: 0.3
             }
         }
         MouseArea {

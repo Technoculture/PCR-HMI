@@ -18,6 +18,7 @@ Item {
             id: label
             font.pixelSize: labelFontSize
             color: textColor
+            font.family: "Work Sans Medium"
             visible: label.text !== ""
             anchors.centerIn: parent
         }

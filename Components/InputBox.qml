@@ -29,6 +29,7 @@ Item {
                 padding: {
                     leftPadding: 16; rightPadding: 16
                 }
+                font.family: "Work Sans Medium"
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
@@ -39,6 +40,7 @@ Item {
             padding: {
                 leftPadding: 16; rightPadding: 16
             }
+            font.family: "Work Sans Medium"
             anchors.verticalCenter: parent.verticalCenter
         }
         MouseArea{
