@@ -54,11 +54,9 @@ Item {
                         rows: 3
                         rowSpacing: 15
                         InputBox{
-                            x:10;y:15
                             placeholderText: "Username"
                         }
                         InputBox{
-                            x:10;y:15
                             placeholderText: "Password"
                         }
                         Text {

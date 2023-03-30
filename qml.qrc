@@ -17,7 +17,7 @@
         <file>Assets/Icons/TestIcon.png</file>
         <file>Assets/Icons/translation 1.png</file>
         <file>Assets/Icons/UpdateIcon.png</file>
-        <file>Screens/Settings_Wifi.qml</file>
+        <file>Screens/Settings.qml</file>
         <file>Assets/Icons/Settings.png</file>
         <file>Assets/Icons/languageIcon.png</file>
         <file>Assets/Icons/TimezoneIcon.png</file>
@@ -28,5 +28,7 @@
         <file>Assets/Icons/signal_wifi_4_bar_lock 1.png</file>
         <file>Assets/Icons/WifiIcon.png</file>
         <file>Assets/Icons/SettingsActive.png</file>
+        <file>Screens/Results.qml</file>
+        <file>Components/DataValue.qml</file>
     </qresource>
 </RCC>

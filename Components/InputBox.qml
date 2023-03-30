@@ -22,6 +22,7 @@ Item {
             width: parent.width-2
             height: parent.height-2
             radius: 4
+            x:1;y:1
             Text {
                 id: phText
                 color: "#64748B"
@@ -45,7 +46,7 @@ Item {
         }
         MouseArea{
             id: activeMouse
-            anchors.fill: input
+            anchors.fill: parent
             onClicked: input.state="active"
         }
 
@@ -70,10 +71,6 @@ Item {
                     padding: {
                         leftPadding: 5; rightPadding: 5
                     }
-                }
-                PropertyChanges {
-                    target: field
-                    cursorVisible: true
                 }
             }
         ]
