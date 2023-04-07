@@ -8,8 +8,8 @@ Item {
         anchors.fill: parent
         color: "#A7F3D0"
         Rectangle{
-            width: 642
-            height: 368
+            width: 597
+            height: 382
             anchors.centerIn: parent
             radius: 8
             Grid{
@@ -41,7 +41,7 @@ Item {
                             font.pixelSize: 16
                             color: "#475569"
                             height: logo.height
-                            padding: 10
+                            padding: 8
                         }
                     }
                     Image {
@@ -59,7 +59,7 @@ Item {
                     Grid{
                         rows: 1
                         columns: 3
-                        columnSpacing: 35
+                        columnSpacing: 47
                         Rectangle{
                             width: 122
                             height: 136
@@ -117,7 +117,7 @@ Item {
                         Rectangle{
                             id: infoDetails
                             width: 322
-                            height: 248
+                            height: 252
 //                            visible: false
                             Grid{
                                 columns: 1
@@ -127,8 +127,10 @@ Item {
                                 DataValue{
                                     id: title1
                                     width: parent.width
+                                    height: 29
                                     dataContent: "Referred by"
                                     dataValueContent: "Dr. Anil Sumar"
+                                    topPaddingExtra: 0
                                 }
                                 DataValue{
                                     id: title2
@@ -150,7 +152,7 @@ Item {
                                 }
                                 Button{
                                     id: save
-                                    width: 287
+                                    width: 96
                                     height: 36
                                     text: "Save"
                                     labelFontSize: 14

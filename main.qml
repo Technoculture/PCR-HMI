@@ -18,7 +18,10 @@ Window {
 //        visible: false
 //        anchors.fill: parent
 //    }
-    Results{
+//    Results{
+//        anchors.fill: parent
+//    }
+    PatientDetails{
         anchors.fill: parent
     }
 }

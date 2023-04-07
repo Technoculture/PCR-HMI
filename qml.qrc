@@ -30,5 +30,6 @@
         <file>Assets/Icons/SettingsActive.png</file>
         <file>Screens/Results.qml</file>
         <file>Components/DataValue.qml</file>
+        <file>Screens/PatientDetails.qml</file>
     </qresource>
 </RCC>

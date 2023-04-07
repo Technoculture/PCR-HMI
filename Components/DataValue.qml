@@ -5,6 +5,7 @@ Item {
     implicitHeight: 39
     property alias dataContent: data.text
     property alias dataValueContent: dataValue.text
+    property int topPaddingExtra: 10
     Rectangle{
         id: dataRec
         width: 111
@@ -13,6 +14,7 @@ Item {
             id: data
             text: "Referred by"
             padding: 10
+            topPadding: topPaddingExtra
             font.pixelSize: 16
             font.letterSpacing: 0.5
             font.family: "Work Sans"
@@ -28,6 +30,7 @@ Item {
             id: dataValue
             text: "Dr. Anil Sumar"
             padding: 10
+            topPadding: topPaddingExtra
             font.pixelSize: 16
             font.family: "Work Sans Medium"
             color: "#475569"
