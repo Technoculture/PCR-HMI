@@ -31,5 +31,6 @@
         <file>Screens/Results.qml</file>
         <file>Components/DataValue.qml</file>
         <file>Screens/PatientDetails.qml</file>
+        <file>Components/SlotPatientTab.qml</file>
     </qresource>
 </RCC>
