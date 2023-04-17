@@ -21,10 +21,13 @@ Window {
 //    Results{
 //        anchors.fill: parent
 //    }
-    PatientDetails{
-        anchors.fill: parent
-    }
+//    PatientDetails{
+//        anchors.fill: parent
+//    }
 //    PresetTest{
 //        anchors.fill: parent
 //    }
+    SlotsInfo{
+        anchors.fill: parent
+    }
 }

@@ -34,5 +34,7 @@
         <file>Components/SlotPatientTab.qml</file>
         <file>Screens/PresetTest.qml</file>
         <file>Components/TestSelect.qml</file>
+        <file>Screens/SlotsInfo.qml</file>
+        <file>Components/SlotsDetails.qml</file>
     </qresource>
 </RCC>
