@@ -32,5 +32,7 @@
         <file>Components/DataValue.qml</file>
         <file>Screens/PatientDetails.qml</file>
         <file>Components/SlotPatientTab.qml</file>
+        <file>Screens/PresetTest.qml</file>
+        <file>Components/TestSelect.qml</file>
     </qresource>
 </RCC>

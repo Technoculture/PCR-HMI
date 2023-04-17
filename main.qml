@@ -24,4 +24,7 @@ Window {
     PatientDetails{
         anchors.fill: parent
     }
+//    PresetTest{
+//        anchors.fill: parent
+//    }
 }

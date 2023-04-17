@@ -20,22 +20,25 @@ Item {
             anchors.bottom: parent.bottom
             color: parent.color
         }
-
-        Text {
-            id: label
-            font.pixelSize: labelFontSize
-            color: textColor
-            font.family: "Work Sans"
-            leftPadding: 20
-            anchors.verticalCenter: parent.verticalCenter
-        }
-        Image {
-            id: icon
-            source: "../Assets/Icons/"+iconSource
-            scale: 0.66
-            anchors.right: parent.right
-            anchors.verticalCenter: parent.verticalCenter
-        }
+//        Grid{
+//            columns: 2
+//            columnSpacing: 60
+//            anchors.fill: parent
+            Text {
+                id: label
+                font.pixelSize: labelFontSize
+                color: textColor
+                font.family: "Work Sans"
+                leftPadding: 20
+                anchors.verticalCenter: parent.verticalCenter
+            }
+            Image {
+                id: icon
+                source: "../Assets/Icons/"+iconSource
+                scale: 0.66
+                anchors.right: parent.right
+            }
+//        }
         MouseArea {
             id: ma
             anchors.fill: parent
