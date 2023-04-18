@@ -17,7 +17,7 @@ Item {
                 height: parent.height-40
                 anchors.centerIn: parent
                 rows: 2
-                rowSpacing: 28
+                rowSpacing: 30
                 Rectangle{
                     id: heading
                     width: parent.width
@@ -28,15 +28,15 @@ Item {
                         FuncButton{
                             id: back
                             height: logo.height
-                            text: "Back"
+                            text: "Signout"
                             textColor: "#64748B"
                             labelFontSize: 16
-                            iconSource: "BackArrowIcon.png"
+                            iconSource: "SignOut.png"
                             onClicked: settingsPage.visible=false
                         }
                         Text {
                             id: settings
-                            text: "Preset Test"
+                            text: "Choose a Slot"
                             font.family: "Work Sans Medium"
                             font.pixelSize: 16
                             color: "#475569"
@@ -55,38 +55,58 @@ Item {
                 Rectangle{
                     id: body
                     width: parent.width
-                    height: 223
+                    height: 318
                     Grid{
-                        id: preTest
-                        width: parent.width
-                        height: parent.height
-                        columns: 1
-                        rowSpacing: 8
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "Malaria PF"
+                        rows: 2
+                        rowSpacing: 15
+                        anchors.fill: parent
+                        Grid{
+                            id: preTest
+                            width: body.width
+                            height: body.height-51
+                            columns: 2
+                            rows: 2
+                            columnSpacing: 23
+                            rowSpacing: 23
+                            SlotsDetails{
+                                slotNo: 1
+                                testName: "MTB"
+                                patientName: "Ashok Singh"
+                            }
+                            SlotsDetails{
+                                slotNo: 2
+                                testName: "MTB Plus"
+                                patientName: "Rashid Khan"
+                            }
+                            SlotsDetails{
+                                slotNo: 3
+                                testName: "MTB"
+                                patientName: "Rashmi Singh"
+                            }
+                            SlotsDetails{
+                                slotNo: 4
+                            }
                         }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "OpticsLong"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "Malaria PVPF"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "MTB"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "MTB Plus"
-                            bottomLine: false
+                        Rectangle{
+                            id: footer
+                            width: body.width
+                            height: 36
+                            Button{
+                                id: startTests
+                                width: 84
+                                height: parent.height
+                                text: "Start Tests"
+                                labelFontSize: 12
+                                butRadius: 4
+                            }
+                            Text {
+                                id: message
+                                text: "Error in Slot 4. Please try again."
+                                color: "#DC2626"
+                                font.family: "Work Sans Medium"
+                                anchors.right: parent.right
+                                anchors.verticalCenter: parent.verticalCenter
+                            }
                         }
                     }
                 }

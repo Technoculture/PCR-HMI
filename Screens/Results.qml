@@ -150,14 +150,15 @@ Item {
                                     dataContent: "Test Name"
                                     dataValueContent: "MTB"
                                 }
-                                Button{
-                                    id: save
-                                    width: 96
-                                    height: 36
-                                    text: "Save"
-                                    labelFontSize: 14
-                                    butRadius: 4
-                                }
+                            }
+                            Button{
+                                id: save
+                                width: 96
+                                height: 36
+                                text: "Save"
+                                labelFontSize: 14
+                                butRadius: 4
+                                anchors.bottom: parent.bottom
                             }
                         }
                     }
