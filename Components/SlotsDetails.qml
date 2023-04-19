@@ -5,6 +5,7 @@ Item {
     implicitWidth: 219
     implicitHeight: 122
 
+    signal clicked()
     property int slotNo: 0
     property string testName: "No Data"
     property string patientName: "No Data"
@@ -87,6 +88,11 @@ Item {
                     }
                 }
             }
+        }
+        MouseArea{
+            id: ma
+            anchors.fill: parent
+            onClicked: root.clicked()
         }
     }
 }

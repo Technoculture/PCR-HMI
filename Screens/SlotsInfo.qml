@@ -32,7 +32,6 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "SignOut.png"
-                            onClicked: settingsPage.visible=false
                         }
                         Text {
                             id: settings
