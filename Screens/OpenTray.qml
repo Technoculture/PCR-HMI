@@ -8,16 +8,17 @@ Item {
         anchors.fill: parent
         color: "#A7F3D0"
         Rectangle{
-            width: 588
-            height: 351
+            id: main
+            width: 539
+            height: 437
             anchors.centerIn: parent
             radius: 8
             Grid{
                 width: parent.width-60
                 height: parent.height-60
                 anchors.centerIn: parent
-                rows: 2
-                rowSpacing: 28
+                rows: 3
+                rowSpacing: 15
                 Rectangle{
                     id: heading
                     width: parent.width
@@ -53,44 +54,43 @@ Item {
                     }
                 }
                 Rectangle{
-                    id: body
                     width: parent.width
-                    height: 223
-                    Grid{
-                        id: preTest
-                        width: parent.width
-                        height: parent.height
-                        columns: 1
-                        rowSpacing: 8
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "Malaria PF"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "OpticsLong"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "Malaria PVPF"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "MTB"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "MTB Plus"
-                            bottomLine: false
-                        }
+                    height: illustrate.height
+                    Image {
+                        id: illustrate
+                        source: "../Assets/Open Tray.png"
+                        anchors.centerIn: parent
+                    }
+                }
+                Rectangle{
+                    width: parent.width
+                    height: tray.height
+                    Button{
+                        id: tray
+                        width: 98
+                        height: 34
+                        text: "Open Tray"
+                        labelFontSize: 12
+                        butRadius: 4
+                        anchors.centerIn: parent
+                        onClicked: if(main.state=="") main.state="Close"
+                        else main.state=""
                     }
                 }
             }
+            states: [
+                State {
+                    name: "Close"
+                    PropertyChanges {
+                        target: illustrate
+                        source: "../Assets/Close Tray.png"
+                    }
+                    PropertyChanges {
+                        target: tray
+                        text: "Close Tray"
+                    }
+                }
+            ]
         }
     }
 }

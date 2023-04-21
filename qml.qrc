@@ -36,5 +36,8 @@
         <file>Components/TestSelect.qml</file>
         <file>Screens/SlotsInfo.qml</file>
         <file>Components/SlotsDetails.qml</file>
+        <file>Screens/OpenTray.qml</file>
+        <file>Assets/Close Tray.png</file>
+        <file>Assets/Open Tray.png</file>
     </qresource>
 </RCC>

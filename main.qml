@@ -27,7 +27,10 @@ Window {
 //    PresetTest{
 //        anchors.fill: parent
 //    }
-    SlotsInfo{
+//    SlotsInfo{
+//        anchors.fill: parent
+//    }
+    OpenTray{
         anchors.fill: parent
     }
 }
