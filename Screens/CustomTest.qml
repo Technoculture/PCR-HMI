@@ -93,6 +93,7 @@ Item {
                         Rectangle{
                             width: 308
                             height: 244
+                            anchors.topMargin: 10
                             Grid{
                                 columns: 1
                                 rowSpacing: 14
@@ -100,6 +101,7 @@ Item {
                                     width: 308
                                     height: 36
                                     InputValue{
+                                        id: temperature
                                         testText: "Temperature (°C)"
                                         anchors.centerIn: parent
                                     }
@@ -108,8 +110,34 @@ Item {
                                     width: 308
                                     height: 36
                                     InputValue{
+                                        id: time
                                         testText: "Time (sec)"
                                         anchors.centerIn: parent
+                                    }
+                                }
+                                Rectangle{
+                                    width: 308
+                                    height: 124
+                                    radius: 4
+                                    color: "#A7F3D0"
+                                    Grid{
+                                        columns: 1
+                                        rowSpacing: 22
+                                        anchors.centerIn: parent
+                                        InputValue{
+                                            id: loop
+                                            testText: "Loop"
+                                            testValue: "39"
+                                            fixed: true
+                                        }
+                                        Button{
+                                            id: save
+                                            width: 275
+                                            height: 36
+                                            text: "Save"
+                                            labelFontSize: 14
+                                            butRadius: 4
+                                        }
                                     }
                                 }
                             }

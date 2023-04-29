@@ -18,6 +18,7 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
         Rectangle{
+            id: toggleButton
             width: 38
             height: 18
             color: "#065F46"
@@ -25,13 +26,33 @@ Item {
             anchors.right: parent.right
             anchors.verticalCenter: parent.verticalCenter
             Rectangle{
+                id: toggle
                 width: 24
                 height: 24
                 radius: 12
                 color: "#34D399"
-                anchors.right: parent.right
+                x: -4
                 anchors.verticalCenter: parent.verticalCenter
             }
+            MouseArea{
+                id: ma
+                anchors.fill: parent
+                onClicked: {
+                    if(toggleButton.state === "On")
+                        toggleButton.state = ""
+                    else
+                        toggleButton.state = "On"
+                }
+            }
+            states: [
+                State {
+                    name: "On"
+                    PropertyChanges {
+                        target: toggle
+                        x: 18
+                    }
+                }
+            ]
         }
     }
 }

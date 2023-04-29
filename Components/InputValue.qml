@@ -6,6 +6,8 @@ Item {
     implicitWidth: 278
     implicitHeight: 36
     property alias testText: testName.text
+    property string testValue: "0"
+    property bool fixed: false
     Rectangle {
         id: test
         anchors.fill: parent
@@ -18,10 +20,13 @@ Item {
             anchors.verticalCenter: parent.verticalCenter
         }
         TextField{
+            id: value
             width: 128
             height: parent.height
             color: "#64748B"
-            text: "0"
+            text: testValue
+            readOnly: fixed
+            horizontalAlignment: TextInput.AlignHCenter
             anchors.right: parent.right
             background: Rectangle{
                 anchors.fill: parent
