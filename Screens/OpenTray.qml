@@ -33,7 +33,10 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "SignOut.png"
-                            onClicked: settingsPage.visible=false
+                            onClicked: {
+                                trayOpening.visible=false
+                                login.visible=true
+                            }
                         }
                         Text {
                             id: settings

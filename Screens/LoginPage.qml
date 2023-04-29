@@ -54,10 +54,10 @@ Item {
                         rows: 3
                         rowSpacing: 15
                         InputBox{
-                            placeholderText: "Username"
+//                            placeholderText: "Username"
                         }
                         InputBox{
-                            placeholderText: "Password"
+//                            placeholderText: "Password"
                         }
                         Text {
                             id: showPassword

@@ -9,10 +9,11 @@ Window {
     height: 480
     visible: true
     title: "PCR"
-//    LoginPage{
-//        id: login
-//        anchors.fill: parent
-//    }
+    LoginPage{
+        id: login
+        anchors.fill: parent
+        visible: false
+    }
 //    Settings{
 //        id: settingsPage
 //        visible: false
@@ -30,7 +31,12 @@ Window {
 //    SlotsInfo{
 //        anchors.fill: parent
 //    }
-    OpenTray{
+//    OpenTray{
+//        id: trayOpening
+//        anchors.fill: parent
+//    }
+    CustomTest{
+        id: customTest
         anchors.fill: parent
     }
 }

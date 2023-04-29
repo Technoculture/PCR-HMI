@@ -1,0 +1,122 @@
+import QtQuick 2.15
+import QtQuick.Controls 1.4
+import "../Components"
+
+Item {
+    id:root
+    Rectangle{
+        anchors.fill: parent
+        color: "#A7F3D0"
+        Rectangle{
+            id: main
+            width: 647
+            height: 367
+            anchors.centerIn: parent
+            radius: 8
+            Grid{
+                width: parent.width-60
+                height: parent.height-60
+                anchors.centerIn: parent
+                rows: 3
+                rowSpacing: 23
+                Rectangle{
+                    id: heading
+                    width: parent.width
+                    height: logo.height
+                    Grid{
+                        columns: 2
+                        columnSpacing: 30
+                        FuncButton{
+                            id: back
+                            height: logo.height
+                            text: "Back"
+                            textColor: "#64748B"
+                            labelFontSize: 16
+                            iconSource: "BackArrowIcon.png"
+                            onClicked: {
+                                customTest.visible=false
+                                login.visible=true
+                            }
+                        }
+                        Text {
+                            id: settings
+                            text: "Custom Test"
+                            font.family: "Work Sans Medium"
+                            font.pixelSize: 16
+                            color: "#475569"
+                            height: logo.height
+                            padding: 8
+                        }
+                    }
+                    Image {
+                        id: logo
+                        source: "../Assets/Tcr Logo.png"
+                        anchors.right: parent.right
+                        width: 40
+                        height: 40
+                    }
+                }
+                Rectangle{
+                    width: parent.width
+                    height: 240
+                    Grid{
+                        columns: 2
+                        columnSpacing: 37
+                        Rectangle{
+                            width: 240
+                            height: parent.height
+                            color: "#ECFDF5"
+                            Grid{
+                                columns: 1
+                                anchors.centerIn: parent
+                                rowSpacing: 14
+                                ToggleValue{
+                                    testText: "RT Process"
+                                }
+                                ToggleValue{
+                                    testText: "Hot Start"
+                                }
+                                ToggleValue{
+                                    testText: "Denaturation"
+                                }
+                                ToggleValue{
+                                    testText: "Annealing"
+                                }
+                                ToggleValue{
+                                    testText: "Extension"
+                                }
+                                ToggleValue{
+                                    testText: "Final Extension"
+                                }
+                            }
+                        }
+                        Rectangle{
+                            width: 308
+                            height: 244
+                            Grid{
+                                columns: 1
+                                rowSpacing: 14
+                                Rectangle{
+                                    width: 308
+                                    height: 36
+                                    InputValue{
+                                        testText: "Temperature (°C)"
+                                        anchors.centerIn: parent
+                                    }
+                                }
+                                Rectangle{
+                                    width: 308
+                                    height: 36
+                                    InputValue{
+                                        testText: "Time (sec)"
+                                        anchors.centerIn: parent
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

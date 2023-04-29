@@ -39,5 +39,8 @@
         <file>Screens/OpenTray.qml</file>
         <file>Assets/Close Tray.png</file>
         <file>Assets/Open Tray.png</file>
+        <file>Screens/CustomTest.qml</file>
+        <file>Components/ToggleValue.qml</file>
+        <file>Components/InputValue.qml</file>
     </qresource>
 </RCC>
