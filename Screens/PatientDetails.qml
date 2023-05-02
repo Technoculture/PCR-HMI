@@ -132,16 +132,16 @@ Item {
                             rowSpacing: 15
                             columnSpacing: 15
                             InputBox{
-                                placeholderText: "Referred Doctor"
+                                placehText: "Referred Doctor"
                             }
                             InputBox{
-                                placeholderText: "Patient's ID"
+                                placehText: "Patient's ID"
                             }
                             InputBox{
-                                placeholderText: "Patient's Name"
+                                placehText: "Patient's Name"
                             }
                             InputBox{
-                                placeholderText: "Patient's Age"
+                                placehText: "Patient's Age"
                             }
                         }
                     }

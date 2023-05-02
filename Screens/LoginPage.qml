@@ -54,10 +54,12 @@ Item {
                         rows: 3
                         rowSpacing: 15
                         InputBox{
-//                            placeholderText: "Username"
+                            placehText: "Username"
                         }
                         InputBox{
-//                            placeholderText: "Password"
+                            id: pass
+                            placehText: "Password"
+                            typeOfInput: TextInput.Password
                         }
                         Text {
                             id: showPassword
@@ -68,6 +70,11 @@ Item {
                             MouseArea{
                                 id: showORhide
                                 anchors.fill: showPassword
+                                onClicked:
+                                    if(pass.typeOfInput === TextInput.Password)
+                                        pass.typeOfInput = TextInput.Normal
+                                    else
+                                        pass.typeOfInput = TextInput.Password
                             }
                         }
                     }

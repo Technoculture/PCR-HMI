@@ -60,13 +60,12 @@ Item {
                         columnSpacing: 60
                         Rectangle{
                             width: 227
-                            height: 258
+                            height: 310
                             color: "#ECFDF5"
                             Grid{
                                 columns: 1
-                                rows: 4
                                 anchors.fill: parent
-                                rowSpacing: 25
+                                rowSpacing: 20
                                 SettingsItem{
                                     id: item1
                                     width: parent.width
@@ -102,6 +101,15 @@ Item {
                                     headText: "Change Timezone"
                                     bodyText: "India +05:30"
                                     iconSource: "UpdateIcon"
+                                    onClicked: body.state="timeSettings"
+                                }
+                                SettingsItem{
+                                    id: item5
+                                    width: parent.width
+                                    height: 46
+                                    headText: "Custom Test"
+                                    bodyText: "Define a Test"
+                                    iconSource: "dashboard_custom"
                                     onClicked: body.state="timeSettings"
                                 }
                             }

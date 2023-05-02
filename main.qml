@@ -14,11 +14,11 @@ Window {
         anchors.fill: parent
         visible: false
     }
-//    Settings{
-//        id: settingsPage
-//        visible: false
-//        anchors.fill: parent
-//    }
+    Settings{
+        id: settingsPage
+        visible: false
+        anchors.fill: parent
+    }
 //    Results{
 //        anchors.fill: parent
 //    }

@@ -6,9 +6,9 @@ Item {
     implicitWidth: 286
     implicitHeight: 36
 
-    signal clicked()
     property alias inputText: field.text
-//    property alias placehText: phText.text
+    property string placehText: ""
+    property alias typeOfInput: field.echoMode
     Rectangle{
         id: input
         anchors.fill: parent
@@ -17,13 +17,19 @@ Item {
             width: 1
             color: "#64748B"
         }
-        color: "#F1F5F9"
         TextField{
             id: field
-            text: "Enter your text"
-            placeholderText: "Username"
             anchors.fill: parent
+            color: "#64748B"
+            placeholderText: placehText
+            anchors.right: parent.right
             font.family: "Work Sans Medium"
+            background: Rectangle{
+                anchors.fill: parent
+                color: "#F1F5F9"
+                radius: 4
+                border.width: 1; border.color: "#64748B"
+            }
         }
 //        Rectangle{
 //            id: placeholder
@@ -43,35 +49,5 @@ Item {
 //                anchors.verticalCenter: parent.verticalCenter
 //            }
 //        }
-        MouseArea{
-            id: activeMouse
-            anchors.fill: parent
-            onClicked: input.state="active"
-        }
-
-        states: [
-            State {
-                name: "active"
-                PropertyChanges {
-                    target: field
-
-                }
-//                PropertyChanges {
-//                    target: placeholder
-//                    width: phText.paintedWidth+10
-//                    height: phText.paintedHeight+6
-//                    x: 18; y: -12
-//                }
-//                PropertyChanges {
-//                    target: phText
-//                    color: "#059669"
-//                    font.pixelSize: 12
-//                    font.letterSpacing: 1
-//                    padding: {
-//                        leftPadding: 5; rightPadding: 5
-//                    }
-//                }
-            }
-        ]
     }
 }

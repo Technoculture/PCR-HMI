@@ -42,5 +42,6 @@
         <file>Screens/CustomTest.qml</file>
         <file>Components/ToggleValue.qml</file>
         <file>Components/InputValue.qml</file>
+        <file>Assets/Icons/dashboard_custom.png</file>
     </qresource>
 </RCC>
