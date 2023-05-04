@@ -110,7 +110,7 @@ Item {
                                     headText: "Custom Test"
                                     bodyText: "Define a Test"
                                     iconSource: "dashboard_custom"
-                                    onClicked: body.state="timeSettings"
+                                    onClicked: body.state="customSettings"
                                 }
                             }
                         }
@@ -323,6 +323,90 @@ Item {
                                 height: 44
                             }
                         }
+                        Rectangle{
+                            id: customTest
+                            width: 213
+                            height: 282
+                            visible: false
+                            Rectangle{
+                                id: customHead
+                                width: parent.width
+                                height: 142
+                                Grid{
+                                    columns: 1
+                                    rowSpacing: 14
+                                    Text {
+                                        id: createTest
+                                        text: "Create a custom Test"
+                                        leftPadding: 3
+                                        topPadding: 3
+                                        font.letterSpacing: 0.6
+                                        color: "#334155"
+                                        font.family: "Work Sans Medium"
+                                    }
+                                    InputBox{
+                                        width: 212
+                                        inputText: "Name the Test"
+                                    }
+                                    Button{
+                                        id: next
+                                        width: 212
+                                        height: 36
+                                        text: "Next"
+                                        labelFontSize: 14
+                                        butRadius: 4
+                                    }
+                                }
+                            }
+                            Rectangle{
+                                id: availableTest
+                                width: parent.width
+                                height: 140
+                                anchors.top: customHead.bottom
+                                Text {
+                                    id: availTest
+                                    text: "Available Tests"
+                                    leftPadding: 3
+                                    bottomPadding: 14
+                                    font.letterSpacing: 0.6
+                                    color: "#334155"
+                                    font.family: "Work Sans Medium"
+                                }
+                                Grid{
+                                    columns: 1
+                                    rowSpacing: 10
+                                    anchors.top: availTest.bottom
+                                    Text {
+                                        id: test1
+                                        text: "Custom Test 1"
+                                        font.letterSpacing: 0.6
+                                        color: "#334155"
+                                        font.family: "Work Sans Medium"
+                                    }
+                                    Text {
+                                        id: test2
+                                        text: "Custom Test 2"
+                                        font.letterSpacing: 0.6
+                                        color: "#334155"
+                                        font.family: "Work Sans Medium"
+                                    }
+                                    Text {
+                                        id: test3
+                                        text: "Custom Test 3"
+                                        font.letterSpacing: 0.6
+                                        color: "#334155"
+                                        font.family: "Work Sans Medium"
+                                    }
+                                    Text {
+                                        id: test4
+                                        text: "Custom Test 4"
+                                        font.letterSpacing: 0.6
+                                        color: "#334155"
+                                        font.family: "Work Sans Medium"
+                                    }
+                                }
+                            }
+                        }
                     }
                     states: [
                         State {
@@ -331,10 +415,12 @@ Item {
                             PropertyChanges { target: update; visible: false }
                             PropertyChanges { target: language; visible: false }
                             PropertyChanges { target: timezone; visible: false }
-                            PropertyChanges { target: item1; iconSource: "WifiIcon"; bodyColor: "#A7F3D0" }
-                            PropertyChanges { target: item2; iconSource: "system_update_alt 2"; bodyColor: "transparent" }
-                            PropertyChanges { target: item3; iconSource: "translation 1"; bodyColor: "transparent" }
-                            PropertyChanges { target: item4; iconSource: "UpdateIcon"; bodyColor: "transparent" }
+                            PropertyChanges { target: customTest; visible: false }
+                            PropertyChanges { target: item1; bodyColor: "#A7F3D0" }
+                            PropertyChanges { target: item2; bodyColor: "transparent" }
+                            PropertyChanges { target: item3; bodyColor: "transparent" }
+                            PropertyChanges { target: item4; bodyColor: "transparent" }
+                            PropertyChanges { target: item5; bodyColor: "transparent" }
                         },
                         State {
                             name: "updateSettings"
@@ -342,10 +428,12 @@ Item {
                             PropertyChanges { target: update; visible: true }
                             PropertyChanges { target: language; visible: false }
                             PropertyChanges { target: timezone; visible: false }
-                            PropertyChanges { target: item1; iconSource: "signal_wifi_4_bar_lock 1"; bodyColor: "transparent" }
-                            PropertyChanges { target: item2; iconSource: "UpdateIconActive"; bodyColor: "#A7F3D0" }
-                            PropertyChanges { target: item3; iconSource: "translation 1"; bodyColor: "transparent" }
-                            PropertyChanges { target: item4; iconSource: "UpdateIcon"; bodyColor: "transparent" }
+                            PropertyChanges { target: customTest; visible: false }
+                            PropertyChanges { target: item1; bodyColor: "transparent" }
+                            PropertyChanges { target: item2; bodyColor: "#A7F3D0" }
+                            PropertyChanges { target: item3; bodyColor: "transparent" }
+                            PropertyChanges { target: item4; bodyColor: "transparent" }
+                            PropertyChanges { target: item5; bodyColor: "transparent" }
                         },
                         State {
                             name: "langSettings"
@@ -353,10 +441,12 @@ Item {
                             PropertyChanges { target: update; visible: false }
                             PropertyChanges { target: language; visible: true }
                             PropertyChanges { target: timezone; visible: false }
-                            PropertyChanges { target: item1; iconSource: "signal_wifi_4_bar_lock 1"; bodyColor: "transparent" }
-                            PropertyChanges { target: item2; iconSource: "system_update_alt 2"; bodyColor: "transparent" }
-                            PropertyChanges { target: item3; iconSource: "languageIcon"; bodyColor: "#A7F3D0" }
-                            PropertyChanges { target: item4; iconSource: "UpdateIcon"; bodyColor: "transparent" }
+                            PropertyChanges { target: customTest; visible: false }
+                            PropertyChanges { target: item1; bodyColor: "transparent" }
+                            PropertyChanges { target: item2; bodyColor: "transparent" }
+                            PropertyChanges { target: item3; bodyColor: "#A7F3D0" }
+                            PropertyChanges { target: item4; bodyColor: "transparent" }
+                            PropertyChanges { target: item5; bodyColor: "transparent" }
                         },
                         State {
                             name: "timeSettings"
@@ -364,10 +454,25 @@ Item {
                             PropertyChanges { target: update; visible: false }
                             PropertyChanges { target: language; visible: false }
                             PropertyChanges { target: timezone; visible: true }
-                            PropertyChanges { target: item1; iconSource: "signal_wifi_4_bar_lock 1"; bodyColor: "transparent" }
-                            PropertyChanges { target: item2; iconSource: "system_update_alt 2"; bodyColor: "transparent" }
-                            PropertyChanges { target: item3; iconSource: "translation 1"; bodyColor: "transparent" }
-                            PropertyChanges { target: item4; iconSource: "TimezoneIcon"; bodyColor: "#A7F3D0" }
+                            PropertyChanges { target: customTest; visible: false }
+                            PropertyChanges { target: item1; bodyColor: "transparent" }
+                            PropertyChanges { target: item2; bodyColor: "transparent" }
+                            PropertyChanges { target: item3; bodyColor: "transparent" }
+                            PropertyChanges { target: item4; bodyColor: "#A7F3D0" }
+                            PropertyChanges { target: item5; bodyColor: "transparent" }
+                        },
+                        State {
+                            name: "customSettings"
+                            PropertyChanges { target: wifi; visible: false }
+                            PropertyChanges { target: update; visible: false }
+                            PropertyChanges { target: language; visible: false }
+                            PropertyChanges { target: timezone; visible: false }
+                            PropertyChanges { target: customTest; visible: true }
+                            PropertyChanges { target: item1; bodyColor: "transparent" }
+                            PropertyChanges { target: item2; bodyColor: "transparent" }
+                            PropertyChanges { target: item3; bodyColor: "transparent" }
+                            PropertyChanges { target: item4; bodyColor: "transparent" }
+                            PropertyChanges { target: item5; bodyColor: "#A7F3D0" }
                         }
                     ]
                 }
