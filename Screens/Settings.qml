@@ -376,33 +376,17 @@ Item {
                                     columns: 1
                                     rowSpacing: 10
                                     anchors.top: availTest.bottom
-                                    Text {
-                                        id: test1
-                                        text: "Custom Test 1"
-                                        font.letterSpacing: 0.6
-                                        color: "#334155"
-                                        font.family: "Work Sans Medium"
+                                    TestNameCustom{
+                                        testText: "Custom Test 1"
                                     }
-                                    Text {
-                                        id: test2
-                                        text: "Custom Test 2"
-                                        font.letterSpacing: 0.6
-                                        color: "#334155"
-                                        font.family: "Work Sans Medium"
+                                    TestNameCustom{
+                                        testText: "Custom Test 2"
                                     }
-                                    Text {
-                                        id: test3
-                                        text: "Custom Test 3"
-                                        font.letterSpacing: 0.6
-                                        color: "#334155"
-                                        font.family: "Work Sans Medium"
+                                    TestNameCustom{
+                                        testText: "Custom Test 3"
                                     }
-                                    Text {
-                                        id: test4
-                                        text: "Custom Test 4"
-                                        font.letterSpacing: 0.6
-                                        color: "#334155"
-                                        font.family: "Work Sans Medium"
+                                    TestNameCustom{
+                                        testText: "Custom Test 4"
                                     }
                                 }
                             }
@@ -475,6 +459,19 @@ Item {
                             PropertyChanges { target: item5; bodyColor: "#A7F3D0" }
                         }
                     ]
+                }
+            }
+            Rectangle{
+                id: editBox
+                width: 247
+                height: 191
+                radius: 4
+                visible: false
+                Text {
+                    id: title
+                    text: "Enter new Name"
+                    font.pixelSize: 16
+                    font.family: "Work Sans Medium"
                 }
             }
         }

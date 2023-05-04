@@ -43,5 +43,6 @@
         <file>Components/ToggleValue.qml</file>
         <file>Components/InputValue.qml</file>
         <file>Assets/Icons/dashboard_custom.png</file>
+        <file>Components/TestNameCustom.qml</file>
     </qresource>
 </RCC>

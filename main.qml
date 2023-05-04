@@ -12,7 +12,6 @@ Window {
     LoginPage{
         id: login
         anchors.fill: parent
-        visible: false
     }
     Settings{
         id: settingsPage
@@ -38,5 +37,6 @@ Window {
     CustomTest{
         id: customTest
         anchors.fill: parent
+        visible: false
     }
 }
