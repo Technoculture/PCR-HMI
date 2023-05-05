@@ -9,9 +9,14 @@ Window {
     height: 480
     visible: true
     title: "PCR"
+    Keyboard{
+        id: keyBoard
+    }
+
     LoginPage{
         id: login
         anchors.fill: parent
+        visible: false
     }
     Settings{
         id: settingsPage
