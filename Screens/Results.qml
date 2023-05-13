@@ -151,7 +151,7 @@ Item {
                                     dataValueContent: "MTB"
                                 }
                             }
-                            Button{
+                            CustomButton{
                                 id: save
                                 width: 96
                                 height: 36

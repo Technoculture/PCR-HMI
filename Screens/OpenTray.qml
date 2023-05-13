@@ -68,7 +68,7 @@ Item {
                 Rectangle{
                     width: parent.width
                     height: tray.height
-                    Button{
+                    CustomButton{
                         id: tray
                         width: 98
                         height: 34

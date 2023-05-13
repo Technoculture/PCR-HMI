@@ -147,7 +147,7 @@ Item {
                                     bodyText: "Connected"
                                     iconSource: "signal_wifi_4_bar_lock 1"
                                 }
-                                Button{
+                                CustomButton{
                                     id: connectbut1
                                     width: 89
                                     height: 24
@@ -172,7 +172,7 @@ Item {
                                     bodyText: "Secured"
                                     iconSource: "Wifi_signal75"
                                 }
-                                Button{
+                                CustomButton{
                                     id: connectbut2
                                     width: 89
                                     height: 24
@@ -197,7 +197,7 @@ Item {
                                     bodyText: "Secured"
                                     iconSource: "Wifi_signal25"
                                 }
-                                Button{
+                                CustomButton{
                                     id: connectbut3
                                     width: 89
                                     height: 24
@@ -245,7 +245,7 @@ Item {
                                     font.family: "Work Sans Medium"
                                 }
                             }
-                            Button{
+                            CustomButton{
                                 id: download
                                 width: 133
                                 height: 36
@@ -348,7 +348,7 @@ Item {
                                         width: 212
                                         inputText: "Name the Test"
                                     }
-                                    Button{
+                                    CustomButton{
                                         id: next
                                         width: 212
                                         height: 36

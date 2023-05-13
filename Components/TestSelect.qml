@@ -15,7 +15,7 @@ Item {
             leftPadding: 7
             anchors.verticalCenter: parent.verticalCenter
         }
-        Button{
+        CustomButton{
             id: saveTest
             width: 58
             height: 34

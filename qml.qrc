@@ -2,7 +2,7 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>Assets/Tcr Logo.png</file>
-        <file>Components/Button.qml</file>
+        <file>Components/CustomButton.qml</file>
         <file>Components/InputBox.qml</file>
         <file>Components/FuncButton.qml</file>
         <file>Screens/LoginPage.qml</file>

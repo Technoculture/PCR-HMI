@@ -5,6 +5,9 @@ import QtGraphicalEffects 1.15
 
 Item {
     id: root
+
+    signal goToNextPage()
+    signal showKeyboard(var active)
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -55,6 +58,7 @@ Item {
                         rowSpacing: 15
                         InputBox{
                             placehText: "Username"
+                            onFocusChanged: showKeyboard(true)
                         }
                         InputBox{
                             id: pass
@@ -79,7 +83,7 @@ Item {
                         }
                     }
                 }
-                Button{
+                CustomButton{
                     id: loginButton
                     width: parent.width
                     height: 36

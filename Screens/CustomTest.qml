@@ -130,7 +130,7 @@ Item {
                                             testValue: "39"
                                             fixed: true
                                         }
-                                        Button{
+                                        CustomButton{
                                             id: save
                                             width: 275
                                             height: 36

@@ -90,7 +90,7 @@ Item {
                             id: footer
                             width: body.width
                             height: 36
-                            Button{
+                            CustomButton{
                                 id: startTests
                                 width: 84
                                 height: parent.height

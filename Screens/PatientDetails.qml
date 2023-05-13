@@ -174,7 +174,7 @@ Item {
                                 }
                             }
                         }
-                        Button{
+                        CustomButton{
                             id: chooseTest
                             width: 114
                             height: parent.height
@@ -185,7 +185,7 @@ Item {
                         }
                     }
                 }
-                Button{
+                CustomButton{
                     id: done
                     width: 66
                     height: 36

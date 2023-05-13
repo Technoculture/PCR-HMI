@@ -26,7 +26,7 @@ Item {
             width: 90
             height: 20
             anchors.right: parent.right
-            Button{
+            CustomButton{
                 id: saveTest
                 width: 51
                 height: 20
