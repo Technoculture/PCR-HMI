@@ -4,6 +4,9 @@ import "../Components"
 
 Item {
     id:root
+    signal requestPresetTest()
+    signal requestSlots()
+    signal requestTray()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -32,7 +35,7 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "BackArrowIcon.png"
-                            onClicked: settingsPage.visible=false
+                            onClicked: requestTray()
                         }
                         Text {
                             id: settings
@@ -182,6 +185,7 @@ Item {
                             text: "Choose Test"
                             labelFontSize: 14
                             butRadius: 4
+                            onClicked: requestPresetTest()
                         }
                     }
                 }
@@ -192,6 +196,7 @@ Item {
                     text: "Done"
                     labelFontSize: 14
                     butRadius: 4
+                    onClicked: requestSlots()
                 }
             }
         }

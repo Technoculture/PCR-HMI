@@ -4,6 +4,10 @@ import "../Components"
 
 Item {
     id:root
+
+    signal requestPatientDetails()
+    signal requestResults()
+    signal requestBack()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -32,6 +36,7 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "SignOut.png"
+                            onClicked: requestBack()
                         }
                         Text {
                             id: settings
@@ -71,19 +76,23 @@ Item {
                                 slotNo: 1
                                 testName: "MTB"
                                 patientName: "Ashok Singh"
+                                onClicked: requestPatientDetails()
                             }
                             SlotsDetails{
                                 slotNo: 2
                                 testName: "MTB Plus"
                                 patientName: "Rashid Khan"
+                                onClicked: requestPatientDetails()
                             }
                             SlotsDetails{
                                 slotNo: 3
                                 testName: "MTB"
                                 patientName: "Rashmi Singh"
+                                onClicked: requestPatientDetails()
                             }
                             SlotsDetails{
                                 slotNo: 4
+                                onClicked: requestPatientDetails()
                             }
                         }
                         Rectangle{
@@ -97,6 +106,7 @@ Item {
                                 text: "Start Tests"
                                 labelFontSize: 12
                                 butRadius: 4
+                                onClicked: requestResults()
                             }
                             Text {
                                 id: message

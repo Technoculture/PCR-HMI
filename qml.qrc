@@ -45,5 +45,6 @@
         <file>Assets/Icons/dashboard_custom.png</file>
         <file>Components/TestNameCustom.qml</file>
         <file>Components/Keyboard.qml</file>
+        <file>Components/WifiItems.qml</file>
     </qresource>
 </RCC>

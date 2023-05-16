@@ -6,8 +6,9 @@ import QtGraphicalEffects 1.15
 Item {
     id: root
 
+    signal requestSettings()
+    signal requestTray()
     signal goToNextPage()
-    signal showKeyboard(var active)
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -90,6 +91,7 @@ Item {
                     text: "Login"
                     labelFontSize: 14
                     butRadius: 4
+                    onClicked: requestTray()
                 }
                 FuncButton{
                     id: settings
@@ -97,7 +99,7 @@ Item {
                     textColor: "#059669"
                     labelFontSize: 16
                     iconSource: "SettingsActive.png"
-                    onClicked: settingsPage.visible=true
+                    onClicked: requestSettings()
                 }
             }
         }

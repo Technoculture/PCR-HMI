@@ -4,6 +4,8 @@ import "../Components"
 
 Item {
     id:root
+
+    signal requestPatientDetails()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -32,7 +34,7 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "BackArrowIcon.png"
-                            onClicked: settingsPage.visible=false
+                            onClicked: requestPatientDetails()
                         }
                         Text {
                             id: settings

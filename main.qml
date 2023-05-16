@@ -9,39 +9,21 @@ Window {
     height: 480
     visible: true
     title: "PCR"
-    Keyboard{
-        id: keyBoard
-    }
-
-    LoginPage{
-        id: login
+    Loader {
+        id: screenLoader
         anchors.fill: parent
-        visible: false
+        source: "Screens/LoginPage.qml"
     }
-    Settings{
-        id: settingsPage
-        visible: false
-        anchors.fill: parent
-    }
-//    Results{
-//        anchors.fill: parent
-//    }
-//    PatientDetails{
-//        anchors.fill: parent
-//    }
-//    PresetTest{
-//        anchors.fill: parent
-//    }
-//    SlotsInfo{
-//        anchors.fill: parent
-//    }
-//    OpenTray{
-//        id: trayOpening
-//        anchors.fill: parent
-//    }
-    CustomTest{
-        id: customTest
-        anchors.fill: parent
-        visible: false
+    Connections {
+        target: screenLoader.item
+        ignoreUnknownSignals: true
+        function onRequestBack() {screenLoader.source = "Screens/LoginPage.qml"}
+        function onRequestSettings() {screenLoader.source = "Screens/Settings.qml"}
+        function onRequestTray() {screenLoader.source = "Screens/OpenTray.qml"}
+        function onRequestPatientDetails(){screenLoader.source = "Screens/PatientDetails.qml"}
+        function onRequestPresetTest(){screenLoader.source = "Screens/PresetTest.qml"}
+        function onRequestCustomTest(){screenLoader.source = "Screens/CustomTest.qml"}
+        function onRequestSlots() {screenLoader.source = "Screens/SlotsInfo.qml"}
+        function onRequestResults() {screenLoader.source = "Screens/Results.qml"}
     }
 }

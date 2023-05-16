@@ -4,6 +4,7 @@ import "../Components"
 
 Item {
     id:root
+    signal requestBack()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -32,7 +33,7 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "BackArrowIcon.png"
-                            onClicked: settingsPage.visible=false
+                            onClicked: requestBack()
                         }
                         Text {
                             id: settings
@@ -117,7 +118,7 @@ Item {
                         Rectangle{
                             id: wifi
                             width: 256
-                            height: 193
+                            height: 266
 //                            visible: false
                             Rectangle{
                                 id: wifiheading
@@ -133,80 +134,31 @@ Item {
                                     font.family: "Work Sans Medium"
                                 }
                             }
-                            Rectangle{
-                                id: listwifi1
-                                width: parent.width-20
-                                height: 54
-                                anchors.horizontalCenter: parent.horizontalCenter
+                            WifiItems{
+                                id: wifi1
                                 anchors.top: wifiheading.bottom
-                                SettingsItem{
-                                    id: list1
-                                    width: 140
-                                    height: 42
-                                    headText: "SuperFiber"
-                                    bodyText: "Connected"
-                                    iconSource: "signal_wifi_4_bar_lock 1"
-                                }
-                                CustomButton{
-                                    id: connectbut1
-                                    width: 89
-                                    height: 24
-                                    text: "Disconnect"
-                                    labelFontSize: 12
-                                    anchors.right: parent.right
-                                    anchors.verticalCenter: list1.verticalCenter
-                                    butRadius: 4
-                                }
+                                wifiName: "SuperFiber"
+                                wifiStatus: true
                             }
-                            Rectangle{
-                                id: listwifi2
-                                width: parent.width-20
-                                height: 54
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                anchors.top: listwifi1.bottom
-                                SettingsItem{
-                                    id: list2
-                                    width: 140
-                                    height: 42
-                                    headText: "Fast Fiber"
-                                    bodyText: "Secured"
-                                    iconSource: "Wifi_signal75"
-                                }
-                                CustomButton{
-                                    id: connectbut2
-                                    width: 89
-                                    height: 24
-                                    text: "Connect"
-                                    labelFontSize: 12
-                                    anchors.right: parent.right
-                                    anchors.verticalCenter: list2.verticalCenter
-                                    butRadius: 4
-                                }
+                            WifiItems{
+                                id: wifi2
+                                anchors.top: wifi1.bottom
+                                wifiName: "FastFiber"
                             }
-                            Rectangle{
-                                id: listwifi3
-                                width: parent.width-20
-                                height: 54
-                                anchors.horizontalCenter: parent.horizontalCenter
-                                anchors.top: listwifi2.bottom
-                                SettingsItem{
-                                    id: list3
-                                    width: 140
-                                    height: 42
-                                    headText: "WorkWifi"
-                                    bodyText: "Secured"
-                                    iconSource: "Wifi_signal25"
-                                }
-                                CustomButton{
-                                    id: connectbut3
-                                    width: 89
-                                    height: 24
-                                    text: "Connect"
-                                    labelFontSize: 12
-                                    anchors.right: parent.right
-                                    anchors.verticalCenter: list3.verticalCenter
-                                    butRadius: 4
-                                }
+                            WifiItems{
+                                id: wifi3
+                                anchors.top: wifi2.bottom
+                                wifiName: "Work2"
+                            }
+                            WifiItems{
+                                id: wifi4
+                                anchors.top: wifi3.bottom
+                                wifiName: "Wifi1"
+                            }
+                            WifiItems{
+                                id: wifi5
+                                anchors.top: wifi4.bottom
+                                wifiName: "WorkWifi"
                             }
                         }
                         Rectangle{

@@ -4,6 +4,8 @@ import "../Components"
 
 Item {
     id:root
+    signal requestPatientDetails()
+    signal requestBack()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -33,10 +35,7 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "SignOut.png"
-                            onClicked: {
-                                trayOpening.visible=false
-                                login.visible=true
-                            }
+                            onClicked: requestBack()
                         }
                         Text {
                             id: settings
@@ -76,24 +75,25 @@ Item {
                         labelFontSize: 12
                         butRadius: 4
                         anchors.centerIn: parent
-                        onClicked: if(main.state=="") main.state="Close"
-                        else main.state=""
+                        onClicked: requestPatientDetails()
+//                            if(main.state=="") main.state="Close"
+//                            else main.state=""
                     }
                 }
             }
-            states: [
-                State {
-                    name: "Close"
-                    PropertyChanges {
-                        target: illustrate
-                        source: "../Assets/Close Tray.png"
-                    }
-                    PropertyChanges {
-                        target: tray
-                        text: "Close Tray"
-                    }
-                }
-            ]
+//            states: [
+//                State {
+//                    name: "Close"
+//                    PropertyChanges {
+//                        target: illustrate
+//                        source: "../Assets/Close Tray.png"
+//                    }
+//                    PropertyChanges {
+//                        target: tray
+//                        text: "Close Tray"
+//                    }
+//                }
+//            ]
         }
     }
 }

@@ -5,6 +5,7 @@ Item {
     id: root
     implicitWidth: 286
     implicitHeight: 36
+    signal showKeyboard(var active)
 
     property alias inputText: field.text
     property string placehText: ""
@@ -30,6 +31,7 @@ Item {
                 radius: 4
                 border.width: 1; border.color: "#64748B"
             }
+            onFocusChanged: showKeyboard()
         }
 //        Rectangle{
 //            id: placeholder

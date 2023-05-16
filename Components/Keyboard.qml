@@ -17,6 +17,7 @@ Item {
     property int keyWidth: 40
     height: parent.height * 0.5
     width: parent.width
+    anchors.bottom: parent.bottom
     z: 100
     Rectangle {
         anchors.fill: parent
