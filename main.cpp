@@ -1,6 +1,11 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QDir>
+#include <QFile>
+#include <QQmlContext>
+#include <QSqlTableModel>
 
+#include <Details.h>
 
 int main(int argc, char *argv[])
 {
@@ -8,6 +13,14 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
     QGuiApplication app(argc, argv);
+
+    QSqlDatabase db = QSqlDatabase::addDatabase(QStringLiteral("QSQLITE"));
+    if (!QFile::exists(QStringLiteral("/usr/share/tcr/pcr.db")))
+        db.setDatabaseName(QStringLiteral("D:/QML_Internship/PCR/PCR-Model/pcr.db"));
+    else
+        db.setDatabaseName(QStringLiteral("/usr/share/tcr/pcr.db"));
+    db.open();
+    Details details(nullptr,db);
 
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
