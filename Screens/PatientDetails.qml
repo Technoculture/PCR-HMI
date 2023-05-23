@@ -1,6 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 1.4
 import "../Components"
+import "../Screens/Results.qml"
 
 Item {
     id:root
@@ -141,6 +142,7 @@ Item {
                                 placehText: "Patient's ID"
                             }
                             InputBox{
+                                id: patientName
                                 placehText: "Patient's Name"
                             }
                             InputBox{
@@ -185,7 +187,7 @@ Item {
                             text: "Choose Test"
                             labelFontSize: 14
                             butRadius: 4
-                            onClicked: requestPresetTest()
+                            onClicked: chooseTest.text = requestPresetTest()
                         }
                     }
                 }
@@ -196,7 +198,20 @@ Item {
                     text: "Done"
                     labelFontSize: 14
                     butRadius: 4
-                    onClicked: requestSlots()
+                    onClicked: {
+                        requestSlots()
+                        var data="";
+                        data += patientName.inputText+";";
+                        data += group.current+";";
+                        data += chooseTest.text+";";
+                        data += title4.dataContent+";";
+                        data += title1.dataContent+";";
+                        data += title2.dataContent+";";
+                        data += title3.dataContent+";";
+                        data += title4.dataContent+";";
+
+                        detailsTable.addRow(-1,data)
+                    }
                 }
             }
         }

@@ -5,7 +5,7 @@ Item {
     id: root
     implicitWidth: 286
     implicitHeight: 36
-    signal showKeyboard(var active)
+    signal showKeyboard()
 
     property alias inputText: field.text
     property string placehText: ""
@@ -33,23 +33,5 @@ Item {
             }
             onFocusChanged: showKeyboard()
         }
-//        Rectangle{
-//            id: placeholder
-//            color: "#F1F5F9"
-//            width: parent.width-2
-//            height: parent.height-2
-//            radius: 4
-//            x:1;y:1
-//            Text {
-//                id: phText
-//                color: "#64748B"
-//                font.pixelSize: 14
-//                padding: {
-//                    leftPadding: 16; rightPadding: 16
-//                }
-//                font.family: "Work Sans Medium"
-//                anchors.verticalCenter: parent.verticalCenter
-//            }
-//        }
     }
 }

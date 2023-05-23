@@ -23,6 +23,7 @@ int main(int argc, char *argv[])
     Details details(nullptr,db);
 
     QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("detailsTable", &details);
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
                      &app, [url](QObject *obj, const QUrl &objUrl) {

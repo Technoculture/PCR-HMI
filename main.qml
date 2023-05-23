@@ -17,13 +17,35 @@ Window {
     Connections {
         target: screenLoader.item
         ignoreUnknownSignals: true
-        function onRequestBack() {screenLoader.source = "Screens/LoginPage.qml"}
-        function onRequestSettings() {screenLoader.source = "Screens/Settings.qml"}
-        function onRequestTray() {screenLoader.source = "Screens/OpenTray.qml"}
-        function onRequestPatientDetails(){screenLoader.source = "Screens/PatientDetails.qml"}
-        function onRequestPresetTest(){screenLoader.source = "Screens/PresetTest.qml"}
-        function onRequestCustomTest(){screenLoader.source = "Screens/CustomTest.qml"}
-        function onRequestSlots() {screenLoader.source = "Screens/SlotsInfo.qml"}
-        function onRequestResults() {screenLoader.source = "Screens/Results.qml"}
+        function onRequestBack() {
+            screenLoader.source = "Screens/LoginPage.qml"
+        }
+        function onRequestSettings() {
+            screenLoader.source = "Screens/Settings.qml"
+        }
+        function onRequestTray() {
+            screenLoader.source = "Screens/OpenTray.qml"
+        }
+        function onRequestPatientDetails(){
+            screenLoader.source = "Screens/PatientDetails.qml"
+        }
+        function onRequestPresetTest(){
+            screenLoader.source = "Screens/PresetTest.qml"
+        }
+        function onRequestCustomTest(){
+            screenLoader.source = "Screens/CustomTest.qml"
+        }
+        function onRequestSlots() {
+            screenLoader.source = "Screens/SlotsInfo.qml"
+        }
+        function onRequestResults() {
+            screenLoader.source = "Screens/Results.qml"
+        }
+}
+    Loader {
+        id: panelIO
+        width: parent.width
+        height: parent.height
+        source: "./Components/Keyboard.qml"
     }
 }
