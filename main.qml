@@ -47,5 +47,6 @@ Window {
         width: parent.width
         height: parent.height
         source: "./Components/Keyboard.qml"
+        visible: false
     }
 }

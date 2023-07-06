@@ -1,7 +1,7 @@
 import QtQuick 2.15
 import QtQuick.Controls 1.4
 import "../Components"
-import "../Screens/Results.qml"
+//import "../Screens/Results.qml"
 
 Item {
     id:root
@@ -136,9 +136,11 @@ Item {
                             rowSpacing: 15
                             columnSpacing: 15
                             InputBox{
+                                id: doctor
                                 placehText: "Referred Doctor"
                             }
                             InputBox{
+                                id: patientID
                                 placehText: "Patient's ID"
                             }
                             InputBox{
@@ -146,6 +148,7 @@ Item {
                                 placehText: "Patient's Name"
                             }
                             InputBox{
+                                id: age
                                 placehText: "Patient's Age"
                             }
                         }
@@ -187,7 +190,7 @@ Item {
                             text: "Choose Test"
                             labelFontSize: 14
                             butRadius: 4
-                            onClicked: chooseTest.text = requestPresetTest()
+                            onClicked: requestPresetTest()
                         }
                     }
                 }
@@ -199,18 +202,16 @@ Item {
                     labelFontSize: 14
                     butRadius: 4
                     onClicked: {
-                        requestSlots()
-                        var data="";
+                        var data = patientID.inputText+";";
                         data += patientName.inputText+";";
-                        data += group.current+";";
+                        data += group.current.toString()+";";
+                        data += age.inputText+";";
                         data += chooseTest.text+";";
-                        data += title4.dataContent+";";
-                        data += title1.dataContent+";";
-                        data += title2.dataContent+";";
-                        data += title3.dataContent+";";
-                        data += title4.dataContent+";";
+                        data += doctor.inputText+";";
+                        data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
 
-                        detailsTable.addRow(-1,data)
+                        detailsTable.addRow(-1,data);
+                        requestSlots()
                     }
                 }
             }
