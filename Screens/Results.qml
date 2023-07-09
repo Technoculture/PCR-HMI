@@ -5,6 +5,7 @@ import "../Components"
 Item {
     id:root
 
+    signal requestBack()
     signal requestSlots()
     Rectangle{
         anchors.fill: parent
@@ -161,6 +162,23 @@ Item {
                                 labelFontSize: 14
                                 butRadius: 4
                                 anchors.bottom: parent.bottom
+                                onClicked: {
+                                    var data="";
+                                    if(body.state==="TestDetails"){
+                                        data+=title1.dataContent+";";
+                                    }
+
+                                    if(body.state==="TestResult"){
+                                        data+=title1.dataValueContent+";";
+                                        data+=title2.dataValueContent+";";
+                                        data+=title3.dataValueContent+";";
+                                        data+=title4.dataValueContent+";";
+                                        data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
+                                        resultsTable.addRow(-1,data);
+
+                                        requestBack()
+                                    }
+                                }
                             }
                         }
                     }

@@ -4,6 +4,8 @@ import "../Components"
 
 Item {
     id:root
+
+    signal requestSettings()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -71,21 +73,27 @@ Item {
                                 anchors.centerIn: parent
                                 rowSpacing: 14
                                 ToggleValue{
+                                    id: rtprocess
                                     testText: "RT Process"
                                 }
                                 ToggleValue{
+                                    id: hotprocess
                                     testText: "Hot Start"
                                 }
                                 ToggleValue{
+                                    id: denaturation
                                     testText: "Denaturation"
                                 }
                                 ToggleValue{
+                                    id: annealing
                                     testText: "Annealing"
                                 }
                                 ToggleValue{
+                                    id: extension
                                     testText: "Extension"
                                 }
                                 ToggleValue{
+                                    id: final_ext
                                     testText: "Final Extension"
                                 }
                             }
@@ -137,6 +145,23 @@ Item {
                                             text: "Save"
                                             labelFontSize: 14
                                             butRadius: 4
+                                            onClicked: {
+                                                var data="";
+                                                data+=settings.text+";";
+                                                data+=rtprocess.myValue+";";
+                                                data+=hotprocess.myValue+";";
+                                                data+=denaturation.mmyValue+";";
+                                                data+=annealing.myValue+";";
+                                                data+=extension.myValue+";";
+                                                data+=final_ext.myValue+";";
+                                                data+=temperature.testValue+";";
+                                                data+=time.testValue+";";
+                                                data+=loop.testValue+";";
+
+                                                testsTable.addRow(-1,data);
+
+                                                requestSettings()
+                                            }
                                         }
                                     }
                                 }

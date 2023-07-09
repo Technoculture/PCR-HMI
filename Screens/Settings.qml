@@ -5,6 +5,7 @@ import "../Components"
 Item {
     id:root
     signal requestBack()
+    signal requestCustomTest()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -307,6 +308,7 @@ Item {
                                         text: "Next"
                                         labelFontSize: 14
                                         butRadius: 4
+                                        onClicked: requestCustomTest()
                                     }
                                 }
                             }

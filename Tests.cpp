@@ -52,13 +52,16 @@ void Tests::addRow(int row, QString newData)
         newRecord.setGenerated(QStringLiteral("id"), true);
     else
         newRecord = record(row);
-    newRecord.setValue(QStringLiteral("patient_id"), data.at(0));
-    newRecord.setValue(QStringLiteral("patient_name"), data.at(1));
-    newRecord.setValue(QStringLiteral("sex"), data.at(2));
-    newRecord.setValue(QStringLiteral("age"), data.at(3));
-    newRecord.setValue(QStringLiteral("test_name"), data.at(4));
-    newRecord.setValue(QStringLiteral("doctor"), data.at(5));
-    newRecord.setValue(QStringLiteral("timestamp"), data.at(6));
+    newRecord.setValue(QStringLiteral("test_name"), data.at(0));
+    newRecord.setValue(QStringLiteral("rt_process"), data.at(1));
+    newRecord.setValue(QStringLiteral("hot_process"), data.at(2));
+    newRecord.setValue(QStringLiteral("denaturation"), data.at(3));
+    newRecord.setValue(QStringLiteral("annealing"), data.at(4));
+    newRecord.setValue(QStringLiteral("extension"), data.at(5));
+    newRecord.setValue(QStringLiteral("final_extension"), data.at(6));
+    newRecord.setValue(QStringLiteral("temperature"), data.at(7));
+    newRecord.setValue(QStringLiteral("time"), data.at(8));
+    newRecord.setValue(QStringLiteral("loops"), data.at(9));
 
     if (row == -1)
         insertRecord(row, newRecord);

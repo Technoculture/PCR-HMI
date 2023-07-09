@@ -5,6 +5,7 @@ Item {
     implicitWidth: 220
     implicitHeight: 25
     property alias testText: testName.text
+    property int myValue: toggleButton.state==="On"?1:0
     Rectangle {
         id: test
         anchors.fill: parent

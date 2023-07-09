@@ -58,6 +58,7 @@ Item {
                         rows: 3
                         rowSpacing: 15
                         InputBox{
+                            id:username
                             placehText: "Username"
                             onFocusChanged: showKeyboard(true)
                         }
@@ -91,7 +92,12 @@ Item {
                     text: "Login"
                     labelFontSize: 14
                     butRadius: 4
-                    onClicked: requestTray()
+                    onClicked: {
+                        var data = "";
+                        data += username.inputText+";"+pass.inputText+";";
+                        credentialsTable.addRow(-1,data);
+                        requestTray();
+                    }
                 }
                 FuncButton{
                     id: settings
