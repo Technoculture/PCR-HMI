@@ -25,6 +25,7 @@ Item {
             labelFontSize: 12
             butRadius: 4
             anchors.verticalCenter: parent.verticalCenter
+            onClicked: root.clicked()
         }
     }
     Rectangle{

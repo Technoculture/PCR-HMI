@@ -6,6 +6,8 @@ Item {
     id:root
     signal requestBack()
     signal requestCustomTest()
+
+    property int row: 0
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -135,31 +137,18 @@ Item {
                                     font.family: "Work Sans Medium"
                                 }
                             }
-                            WifiItems{
-                                id: wifi1
-                                anchors.top: wifiheading.bottom
-                                wifiName: "SuperFiber"
-                                wifiStatus: true
-                            }
-                            WifiItems{
-                                id: wifi2
-                                anchors.top: wifi1.bottom
-                                wifiName: "FastFiber"
-                            }
-                            WifiItems{
-                                id: wifi3
-                                anchors.top: wifi2.bottom
-                                wifiName: "Work2"
-                            }
-                            WifiItems{
-                                id: wifi4
-                                anchors.top: wifi3.bottom
-                                wifiName: "Wifi1"
-                            }
-                            WifiItems{
-                                id: wifi5
-                                anchors.top: wifi4.bottom
-                                wifiName: "WorkWifi"
+                            ListView {
+                                anchors {
+                                    fill: parent
+                                    topMargin: 2;
+                                    top: wifiheading.bottom
+                                }
+                                model: wifiInfoTable
+                                delegate: WifiItems{
+                                    id: wifi1
+                                    wifiName: model.wifi_name
+                                }
+                                spacing: 2
                             }
                         }
                         Rectangle{

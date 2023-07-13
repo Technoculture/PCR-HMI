@@ -29,8 +29,9 @@ Window {
         function onRequestPatientDetails(){
             screenLoader.source = "Screens/PatientDetails.qml"
         }
-        function onRequestPresetTest(){
+        function onRequestPresetTest(slotNumber){
             screenLoader.source = "Screens/PresetTest.qml"
+            screenLoader.item.testNumber=slotNumber;
         }
         function onRequestCustomTest(){
             screenLoader.source = "Screens/CustomTest.qml"
@@ -40,6 +41,18 @@ Window {
         }
         function onRequestResults() {
             screenLoader.source = "Screens/Results.qml"
+        }
+        function onGoBackWithTestName(slotNumber,name){
+            screenLoader.source = "Screens/PatientDetails.qml"
+            if(slotNumber===1){
+                screenLoader.item.testName1=name
+            }else if(slotNumber===2){
+                screenLoader.item.testName2=name
+            }else if(slotNumber===3){
+                screenLoader.item.testName3=name
+            }else if(slotNumber===4){
+                screenLoader.item.testName4=name
+            }
         }
 }
     Loader {

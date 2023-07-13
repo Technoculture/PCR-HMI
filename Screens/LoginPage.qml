@@ -9,6 +9,8 @@ Item {
     signal requestSettings()
     signal requestTray()
     signal goToNextPage()
+
+    property int index: -1
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -77,10 +79,14 @@ Item {
                                 id: showORhide
                                 anchors.fill: showPassword
                                 onClicked:
-                                    if(pass.typeOfInput === TextInput.Password)
+                                    if(pass.typeOfInput === TextInput.Password){
                                         pass.typeOfInput = TextInput.Normal
-                                    else
+                                        showPassword.text = "Hide Password"
+                                    }
+                                    else{
                                         pass.typeOfInput = TextInput.Password
+                                        showPassword.text = "Show Password"
+                                    }
                             }
                         }
                     }
@@ -93,9 +99,9 @@ Item {
                     labelFontSize: 14
                     butRadius: 4
                     onClicked: {
-                        var data = "";
-                        data += username.inputText+";"+pass.inputText+";";
-                        credentialsTable.addRow(-1,data);
+//                        var data = "";
+//                        data += username.inputText+";"+pass.inputText+";";
+//                        credentialsTable.addRow(root.index,data);
                         requestTray();
                     }
                 }

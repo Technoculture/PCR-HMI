@@ -5,7 +5,10 @@ import "../Components"
 Item {
     id:root
 
+    signal goBackWithTestName(var testNumber, var testname)
     signal requestPatientDetails()
+
+    property int testNumber: -1
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -58,38 +61,22 @@ Item {
                     id: body
                     width: parent.width
                     height: 223
-                    Grid{
-                        id: preTest
-                        width: parent.width
-                        height: parent.height
-                        columns: 1
-                        rowSpacing: 8
-                        TestSelect{
+                    ListView {
+                        anchors {
+                            fill: parent
+                            topMargin: 2;
+                        }
+                        model: testsTable
+                        delegate:  TestSelect{
                             width: parent.width
                             height: 39
-                            testText: "Malaria PF"
+                            testText: model.test_name
+//                            bottomLine: false
+                            onClicked: {
+                                goBackWithTestName(testNumber,testText)
+                            }
                         }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "OpticsLong"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "Malaria PVPF"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "MTB"
-                        }
-                        TestSelect{
-                            width: parent.width
-                            height: 39
-                            testText: "MTB Plus"
-                            bottomLine: false
-                        }
+                        spacing: 8
                     }
                 }
             }

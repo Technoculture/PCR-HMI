@@ -5,9 +5,16 @@ import "../Components"
 
 Item {
     id:root
-    signal requestPresetTest()
+    signal requestPresetTest(var slotNumber)
     signal requestSlots()
     signal requestTray()
+
+    property string testName1: "Slot 1"
+    property string testName2: "Slot 2"
+    property string testName3: "Slot 3"
+    property string testName4: "Slot 4"
+    property int number: 1
+    property int index: -1
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -72,32 +79,34 @@ Item {
                             columnSpacing: 5
                             SlotPatientTab{
                                 id: slot1
-                                text: "MTB"
+                                text: testName1
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
+                                tabColor: "#D1FAE5"
                                 onClicked: {
                                     slot1.tabColor = "#D1FAE5"
                                     slot2.tabColor = "#E2E8F0"
                                     slot3.tabColor = "#E2E8F0"
                                     slot4.tabColor = "#E2E8F0"
+                                    number=1
                                 }
                             }
                             SlotPatientTab{
                                 id: slot2
-                                text: "Slot 2"
+                                text: testName2
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
-                                tabColor: "#D1FAE5"
                                 onClicked: {
                                     slot1.tabColor = "#E2E8F0"
                                     slot2.tabColor = "#D1FAE5"
                                     slot3.tabColor = "#E2E8F0"
                                     slot4.tabColor = "#E2E8F0"
+                                    number=2
                                 }
                             }
                             SlotPatientTab{
                                 id: slot3
-                                text: "Slot 3"
+                                text: testName3
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 onClicked: {
@@ -105,11 +114,12 @@ Item {
                                     slot2.tabColor = "#E2E8F0"
                                     slot3.tabColor = "#D1FAE5"
                                     slot4.tabColor = "#E2E8F0"
+                                    number=3
                                 }
                             }
                             SlotPatientTab{
                                 id: slot4
-                                text: "Slot 4"
+                                text: testName4
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 onClicked: {
@@ -117,6 +127,7 @@ Item {
                                     slot2.tabColor = "#E2E8F0"
                                     slot3.tabColor = "#E2E8F0"
                                     slot4.tabColor = "#D1FAE5"
+                                    number=4
                                 }
                             }
                         }
@@ -168,16 +179,15 @@ Item {
                             Row{
                                 anchors.fill: parent
                                 spacing: 30
-                                ExclusiveGroup{id: group}
                                 RadioButton{
+                                    id: male
                                     checked: true
                                     text: "Male"
-                                    exclusiveGroup: group
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
                                 RadioButton{
+                                    id: female
                                     text: "Female"
-                                    exclusiveGroup: group
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
                             }
@@ -190,7 +200,9 @@ Item {
                             text: "Choose Test"
                             labelFontSize: 14
                             butRadius: 4
-                            onClicked: requestPresetTest()
+                            onClicked: {
+                                requestPresetTest(number)
+                            }
                         }
                     }
                 }
@@ -202,15 +214,21 @@ Item {
                     labelFontSize: 14
                     butRadius: 4
                     onClicked: {
+                        var selectedTest;
+                        if(number===1)selectedTest=testName1;
+                        else if(number===2)selectedTest=testName2;
+                        else if(number===3)selectedTest=testName3;
+                        else if(number===4)selectedTest=testName4;
                         var data = patientID.inputText+";";
+                        data += number+";";
                         data += patientName.inputText+";";
-                        data += group.current.toString()+";";
+                        data += ((male.checked===true)?"Male":"Female")+";";
                         data += age.inputText+";";
-                        data += chooseTest.text+";";
+                        data += selectedTest+";";
                         data += doctor.inputText+";";
                         data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
 
-                        detailsTable.addRow(-1,data);
+                        detailsTable.addRow(root.index,data);
                         requestSlots()
                     }
                 }

@@ -1,5 +1,5 @@
 import QtQuick 2.15
-import QtQuick.Controls 2.0
+import QtQuick.Controls 2.1
 
 Item {
     id: root
@@ -8,7 +8,7 @@ Item {
     signal showKeyboard()
 
     property alias inputText: field.text
-    property string placehText: ""
+    property string placehText: "Enter.."
     property alias typeOfInput: field.echoMode
     Rectangle{
         id: input
@@ -20,7 +20,8 @@ Item {
         }
         TextField{
             id: field
-            anchors.fill: parent
+            width: parent.width
+            height: parent.height
             color: "#64748B"
             placeholderText: placehText
             anchors.right: parent.right
@@ -31,7 +32,7 @@ Item {
                 radius: 4
                 border.width: 1; border.color: "#64748B"
             }
-            onFocusChanged: showKeyboard()
+//            onFocusChanged: showKeyboard()
         }
     }
 }

@@ -5,8 +5,9 @@ import "../Components"
 Item {
     id:root
 
-    signal requestBack()
+    signal requestTray()
     signal requestSlots()
+    property int index: -1
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -132,26 +133,26 @@ Item {
                                     width: parent.width
                                     height: 29
                                     dataContent: "Referred by"
-                                    dataValueContent: "Dr. Anil Sumar"
+                                    dataValueContent: detailsTable.roleFromRow(index,"doctor")
                                     topPaddingExtra: 0
                                 }
                                 DataValue{
                                     id: title2
                                     width: parent.width
                                     dataContent: "Date"
-                                    dataValueContent: "27-03-2023"
+                                    dataValueContent: "12-07-2023"
                                 }
                                 DataValue{
                                     id: title3
                                     width: parent.width
                                     dataContent: "Time"
-                                    dataValueContent: "12:07"
+                                    dataValueContent: Qt.formatTime(new Date(),"hh:mm")
                                 }
                                 DataValue{
                                     id: title4
                                     width: parent.width
                                     dataContent: "Test Name"
-                                    dataValueContent: "MTB"
+                                    dataValueContent: detailsTable.roleFromRow(index,"test_name")
                                 }
                             }
                             CustomButton{
@@ -176,7 +177,7 @@ Item {
                                         data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
                                         resultsTable.addRow(-1,data);
 
-                                        requestBack()
+                                        requestTray()
                                     }
                                 }
                             }
@@ -188,20 +189,20 @@ Item {
                             PropertyChanges { target: doctor; color: "#059669" }
                             PropertyChanges { target: patient; color: "#475569"}
                             PropertyChanges { target: test; color: "#475569"}
-                            PropertyChanges { target: title1; dataContent: "Referred by"; dataValueContent: "Dr. Anil Sumar" }
+                            PropertyChanges { target: title1; dataContent: "Referred by"; dataValueContent: detailsTable.roleFromRow(index,"doctor") }
                             PropertyChanges { target: title2; dataContent: "Date"; dataValueContent: "27-03-2023" }
-                            PropertyChanges { target: title3; dataContent: "Time"; dataValueContent: "12:07" }
-                            PropertyChanges { target: title4; dataContent: "Test Name"; dataValueContent: "MTB" }
+                            PropertyChanges { target: title3; dataContent: "Time"; dataValueContent: detailsTable.roleFromRow(index,"timestamp") }
+                            PropertyChanges { target: title4; dataContent: "Test Name"; dataValueContent: detailsTable.roleFromRow(index,"test_name") }
                         },
                         State {
                             name: "PatientDetails"
                             PropertyChanges { target: doctor; color: "#475569" }
                             PropertyChanges { target: patient; color: "#059669"}
                             PropertyChanges { target: test; color: "#475569"}
-                            PropertyChanges { target: title1; dataContent: "Patient ID"; dataValueContent: "140988" }
-                            PropertyChanges { target: title2; dataContent: "Name"; dataValueContent: "Ashok Kumar" }
-                            PropertyChanges { target: title3; dataContent: "Age"; dataValueContent: "43" }
-                            PropertyChanges { target: title4; dataContent: "Sex"; dataValueContent: "Male" }
+                            PropertyChanges { target: title1; dataContent: "Patient ID"; dataValueContent: detailsTable.roleFromRow(index,"patient_id") }
+                            PropertyChanges { target: title2; dataContent: "Name"; dataValueContent: detailsTable.roleFromRow(index,"patient_name") }
+                            PropertyChanges { target: title3; dataContent: "Age"; dataValueContent: detailsTable.roleFromRow(index,"age") }
+                            PropertyChanges { target: title4; dataContent: "Sex"; dataValueContent: detailsTable.roleFromRow(index,"sex") }
                         },
                         State {
                             name: "TestResult"
