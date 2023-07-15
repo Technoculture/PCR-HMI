@@ -13,8 +13,9 @@ Item {
     property string testName2: "Slot 2"
     property string testName3: "Slot 3"
     property string testName4: "Slot 4"
-    property int number: 1
+    property int number: -1
     property int index: -1
+    property string currentState: number.toString()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -74,6 +75,7 @@ Item {
                         height: 36
                         color: "white"
                         anchors.top: parent.top
+                        state: currentState
                         Grid{
                             columns: 4
                             columnSpacing: 5
@@ -84,10 +86,7 @@ Item {
                                 iconSource: "Down_Arrow.png"
                                 tabColor: "#D1FAE5"
                                 onClicked: {
-                                    slot1.tabColor = "#D1FAE5"
-                                    slot2.tabColor = "#E2E8F0"
-                                    slot3.tabColor = "#E2E8F0"
-                                    slot4.tabColor = "#E2E8F0"
+                                    slotTabs.state="1"
                                     number=1
                                 }
                             }
@@ -97,10 +96,7 @@ Item {
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 onClicked: {
-                                    slot1.tabColor = "#E2E8F0"
-                                    slot2.tabColor = "#D1FAE5"
-                                    slot3.tabColor = "#E2E8F0"
-                                    slot4.tabColor = "#E2E8F0"
+                                    slotTabs.state="2"
                                     number=2
                                 }
                             }
@@ -110,10 +106,7 @@ Item {
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 onClicked: {
-                                    slot1.tabColor = "#E2E8F0"
-                                    slot2.tabColor = "#E2E8F0"
-                                    slot3.tabColor = "#D1FAE5"
-                                    slot4.tabColor = "#E2E8F0"
+                                    slotTabs.state="3"
                                     number=3
                                 }
                             }
@@ -123,14 +116,41 @@ Item {
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 onClicked: {
-                                    slot1.tabColor = "#E2E8F0"
-                                    slot2.tabColor = "#E2E8F0"
-                                    slot3.tabColor = "#E2E8F0"
-                                    slot4.tabColor = "#D1FAE5"
+                                    slotTabs.state="4"
                                     number=4
                                 }
                             }
                         }
+                        states: [
+                            State {
+                                name: "1"
+                                PropertyChanges { target: slot1; tabColor: "#D1FAE5" }
+                                PropertyChanges { target: slot2; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot3; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot4; tabColor: "#E2E8F0" }
+                            },
+                            State {
+                                name: "2"
+                                PropertyChanges { target: slot2; tabColor: "#D1FAE5" }
+                                PropertyChanges { target: slot1; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot3; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot4; tabColor: "#E2E8F0" }
+                            },
+                            State {
+                                name: "3"
+                                PropertyChanges { target: slot3; tabColor: "#D1FAE5" }
+                                PropertyChanges { target: slot2; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot1; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot4; tabColor: "#E2E8F0" }
+                            },
+                            State {
+                                name: "4"
+                                PropertyChanges { target: slot4; tabColor: "#D1FAE5" }
+                                PropertyChanges { target: slot2; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot3; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot1; tabColor: "#E2E8F0" }
+                            }
+                        ]
                     }
                     Rectangle{
                         id: infoInput
@@ -179,14 +199,17 @@ Item {
                             Row{
                                 anchors.fill: parent
                                 spacing: 30
+                                ExclusiveGroup{id: group}
                                 RadioButton{
                                     id: male
                                     checked: true
+                                    exclusiveGroup: group
                                     text: "Male"
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
                                 RadioButton{
                                     id: female
+                                    exclusiveGroup: group
                                     text: "Female"
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
@@ -214,22 +237,60 @@ Item {
                     labelFontSize: 14
                     butRadius: 4
                     onClicked: {
-                        var selectedTest;
-                        if(number===1)selectedTest=testName1;
-                        else if(number===2)selectedTest=testName2;
-                        else if(number===3)selectedTest=testName3;
-                        else if(number===4)selectedTest=testName4;
-                        var data = patientID.inputText+";";
-                        data += number+";";
-                        data += patientName.inputText+";";
-                        data += ((male.checked===true)?"Male":"Female")+";";
-                        data += age.inputText+";";
-                        data += selectedTest+";";
-                        data += doctor.inputText+";";
-                        data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
+                        if(doctor.inputText==""){
+                            doctor.myBorder="#F02D1F"
+                            if(patientID.inputText!="")
+                                patientID.myBorder="#64748B"
+                            if(patientName.inputText!="")
+                                patientName.myBorder="#64748B"
+                            if(age.inputText!="")
+                                age.myBorder="#64748B"
+                        }
+                        if(patientID.inputText==""){
+                            patientID.myBorder="#F02D1F"
+                            if(doctor.inputText!="")
+                                doctor.myBorder="#64748B"
+                            if(patientName.inputText!="")
+                                patientName.myBorder="#64748B"
+                            if(age.inputText!="")
+                                age.myBorder="#64748B"
+                        }
+                        if(patientName.inputText==""){
+                            patientName.myBorder="#F02D1F"
+                            if(patientID.inputText!="")
+                                patientID.myBorder="#64748B"
+                            if(doctor.inputText!="")
+                                doctor.myBorder="#64748B"
+                            if(age.inputText!="")
+                                age.myBorder="#64748B"
+                        }
+                        if(age.inputText==""){
+                            age.myBorder="#F02D1F"
+                            if(patientID.inputText!="")
+                                patientID.myBorder="#64748B"
+                            if(patientName.inputText!="")
+                                patientName.myBorder="#64748B"
+                            if(doctor.inputText!="")
+                                doctor.myBorder="#64748B"
+                        }
+                        if(doctor.inputText!="" && patientID.inputText!="" && patientName.inputText!="" && age.inputText!=""){
+                            var selectedTest;
+                            if(number===1)selectedTest=testName1;
+                            else if(number===2)selectedTest=testName2;
+                            else if(number===3)selectedTest=testName3;
+                            else if(number===4)selectedTest=testName4;
+                            var data = patientID.inputText+";";
+                            data += number+";";
+                            data += patientName.inputText+";";
+                            data += ((male.checked===true)?"Male":"Female")+";";
+                            data += age.inputText+";";
+                            data += selectedTest+";";
+                            data += doctor.inputText+";";
+                            data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
 
-                        detailsTable.addRow(root.index,data);
-                        requestSlots()
+                            detailsTable.addRow(root.index,data);
+                            requestSlots()
+                        }
                     }
                 }
             }

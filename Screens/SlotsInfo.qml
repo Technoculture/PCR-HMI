@@ -5,7 +5,7 @@ import "../Components"
 Item {
     id:root
 
-    signal requestPatientDetails()
+    signal requestPatientDetails(var slotNumber)
     signal requestResults()
     signal requestBack()
     Rectangle{
@@ -76,23 +76,25 @@ Item {
                                 slotNo: 1
                                 testName: "MTB"
                                 patientName: "Ashok Singh"
-                                onClicked: requestPatientDetails()
+                                onClicked: requestPatientDetails(1)
                             }
                             SlotsDetails{
                                 slotNo: 2
                                 testName: "MTB Plus"
                                 patientName: "Rashid Khan"
-                                onClicked: requestPatientDetails()
+                                onClicked: requestPatientDetails(2)
                             }
                             SlotsDetails{
                                 slotNo: 3
                                 testName: "MTB"
                                 patientName: "Rashmi Singh"
-                                onClicked: requestPatientDetails()
+                                onClicked: requestPatientDetails(3)
                             }
                             SlotsDetails{
                                 slotNo: 4
-                                onClicked: requestPatientDetails()
+                                testName: "MTB"
+                                patientName: "Rashmi Singh"
+                                onClicked: requestPatientDetails(4)
                             }
                         }
                         Rectangle{

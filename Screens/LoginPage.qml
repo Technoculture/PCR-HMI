@@ -62,7 +62,6 @@ Item {
                         InputBox{
                             id:username
                             placehText: "Username"
-                            onFocusChanged: showKeyboard(true)
                         }
                         InputBox{
                             id: pass
@@ -99,10 +98,24 @@ Item {
                     labelFontSize: 14
                     butRadius: 4
                     onClicked: {
-//                        var data = "";
-//                        data += username.inputText+";"+pass.inputText+";";
-//                        credentialsTable.addRow(root.index,data);
-                        requestTray();
+                        if(username.inputText==""){
+                            username.myBorder="#F02D1F"
+                            if(pass.inputText!="")
+                                pass.myBorder="#64748B"
+                        }
+                        if(pass.inputText==""){
+                            pass.myBorder="#F02D1F"
+                            if(username.inputText!="")
+                                username.myBorder="#64748B"
+                        }
+                        if(username.inputText!="" && pass.inputText!="")
+                            if(username.inputText===credentialsTable.roleFromRow(0,"username")
+                                    && pass.inputText===credentialsTable.roleFromRow(0,"password"))
+                                requestTray();
+                            else{
+                                username.myBorder="#F02D1F"
+                                pass.myBorder="#F02D1F"
+                            }
                     }
                 }
                 FuncButton{

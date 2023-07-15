@@ -4,7 +4,7 @@ import "../Components"
 
 Item {
     id:root
-    signal requestPatientDetails()
+    signal requestPatientDetails(var slotNumber)
     signal requestBack()
     Rectangle{
         anchors.fill: parent
@@ -75,7 +75,7 @@ Item {
                         labelFontSize: 12
                         butRadius: 4
                         anchors.centerIn: parent
-                        onClicked: requestPatientDetails()
+                        onClicked: requestPatientDetails(1)
 //                            if(main.state=="") main.state="Close"
 //                            else main.state=""
                     }

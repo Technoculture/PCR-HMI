@@ -35,14 +35,26 @@ Item {
                 labelFontSize: 12
                 onClicked: root.clicked()
             }
-            Text {
+            CustomButton{
                 id: editButton
-                text: "Edit"
-                font.pixelSize: 14
-                font.family: "Work Sans"
+                width: 25
+                height: 20
                 anchors.right: parent.right
-                color: "#059669"
+                text: "Edit"
+                labelFontSize: 14
+                bgColor: "transparent"
+                bgColorPressed: "transparent"
+                textColor: "#059669"
+                onClicked: root.clicked()
             }
+//            Text {
+//                id: editButton
+//                text: "Edit"
+//                font.pixelSize: 14
+//                font.family: "Work Sans"
+//                anchors.right: parent.right
+//                color: "#059669"
+//            }
         }
     }
 }

@@ -26,8 +26,9 @@ Window {
         function onRequestTray() {
             screenLoader.source = "Screens/OpenTray.qml"
         }
-        function onRequestPatientDetails(){
+        function onRequestPatientDetails(slotNumber){
             screenLoader.source = "Screens/PatientDetails.qml"
+            screenLoader.item.number=slotNumber;
         }
         function onRequestPresetTest(slotNumber){
             screenLoader.source = "Screens/PresetTest.qml"
@@ -46,12 +47,20 @@ Window {
             screenLoader.source = "Screens/PatientDetails.qml"
             if(slotNumber===1){
                 screenLoader.item.testName1=name
+                screenLoader.item.number=1
+                screenLoader.item.currentState="1"
             }else if(slotNumber===2){
                 screenLoader.item.testName2=name
+                screenLoader.item.number=2
+                screenLoader.item.currentState="2"
             }else if(slotNumber===3){
                 screenLoader.item.testName3=name
+                screenLoader.item.number=3
+                screenLoader.item.currentState="3"
             }else if(slotNumber===4){
                 screenLoader.item.testName4=name
+                screenLoader.item.number=4
+                screenLoader.item.currentState="4"
             }
         }
 }
