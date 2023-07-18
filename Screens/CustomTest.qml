@@ -6,6 +6,8 @@ Item {
     id:root
 
     signal requestSettings()
+    property string testName: "Custom Test"
+    property int index: -1
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -36,13 +38,12 @@ Item {
                             labelFontSize: 16
                             iconSource: "BackArrowIcon.png"
                             onClicked: {
-                                customTest.visible=false
-                                login.visible=true
+                                requestSettings()
                             }
                         }
                         Text {
                             id: settings
-                            text: "Custom Test"
+                            text: testName
                             font.family: "Work Sans Medium"
                             font.pixelSize: 16
                             color: "#475569"
@@ -110,7 +111,7 @@ Item {
                                     height: 36
                                     InputValue{
                                         id: temperature
-                                        testText: "Temperature (°C)"
+                                        propText: "Temperature (°C)"
                                         anchors.centerIn: parent
                                     }
                                 }
@@ -119,7 +120,7 @@ Item {
                                     height: 36
                                     InputValue{
                                         id: time
-                                        testText: "Time (sec)"
+                                        propText: "Time (sec)"
                                         anchors.centerIn: parent
                                     }
                                 }
@@ -134,9 +135,9 @@ Item {
                                         anchors.centerIn: parent
                                         InputValue{
                                             id: loop
-                                            testText: "Loop"
-                                            testValue: "39"
-                                            fixed: true
+                                            propText: "Loop"
+                                            propValue: "39"
+                                            set: true
                                         }
                                         CustomButton{
                                             id: save
@@ -150,15 +151,15 @@ Item {
                                                 data+=settings.text+";";
                                                 data+=rtprocess.myValue+";";
                                                 data+=hotprocess.myValue+";";
-                                                data+=denaturation.mmyValue+";";
+                                                data+=denaturation.myValue+";";
                                                 data+=annealing.myValue+";";
                                                 data+=extension.myValue+";";
                                                 data+=final_ext.myValue+";";
-                                                data+=temperature.testValue+";";
-                                                data+=time.testValue+";";
-                                                data+=loop.testValue+";";
+                                                data+=temperature.propValue+";";
+                                                data+=time.propValue+";";
+                                                data+=loop.propValue+";";
 
-                                                testsTable.addRow(-1,data);
+                                                testsTable.addRow(index,data);
 
                                                 requestSettings()
                                             }

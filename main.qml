@@ -34,8 +34,10 @@ Window {
             screenLoader.source = "Screens/PresetTest.qml"
             screenLoader.item.testNumber=slotNumber;
         }
-        function onRequestCustomTest(){
+        function onRequestCustomTest(newTest,curIndex){
             screenLoader.source = "Screens/CustomTest.qml"
+            screenLoader.item.testName=newTest
+            screenLoader.item.index=curIndex
         }
         function onRequestSlots() {
             screenLoader.source = "Screens/SlotsInfo.qml"

@@ -5,35 +5,26 @@ Item {
     id: root
     implicitWidth: 278
     implicitHeight: 36
-    property alias testText: testName.text
-    property string testValue: "0"
-    property bool fixed: false
+    property alias propText: propertyTest.text
+    property alias propValue: propertyValue.inputText
+    property bool set: false
     Rectangle {
         id: test
         anchors.fill: parent
         color: "transparent"
         Text {
-            id: testName
+            id: propertyTest
             font.pixelSize: 16
             font.family: "Work Sans Medium"
             color: "#334155"
             anchors.verticalCenter: parent.verticalCenter
         }
-        TextField{
-            id: value
+        InputBox{
+            id: propertyValue
             width: 128
-            height: parent.height
-            color: "#64748B"
-            text: testValue
-            readOnly: fixed
-            horizontalAlignment: TextInput.AlignHCenter
+            height: 36
+            fixed: set
             anchors.right: parent.right
-            background: Rectangle{
-                anchors.fill: parent
-                color: "#F1F5F9"
-                radius: 4
-                border.width: 1
-            }
         }
     }
 }

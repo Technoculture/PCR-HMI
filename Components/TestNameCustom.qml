@@ -7,7 +7,8 @@ Item {
     implicitWidth: 210
     implicitHeight: 20
 
-    signal clicked()
+    signal selectClicked()
+    signal editClicked()
     property alias testText: testName.text
     Rectangle {
         id: test
@@ -23,21 +24,21 @@ Item {
         }
         Rectangle{
             id: edit
-            width: 90
+            width: 95
             height: 20
             anchors.right: parent.right
             CustomButton{
                 id: saveTest
-                width: 51
+                width: 50
                 height: 20
                 text: "Select"
                 butRadius: 4
                 labelFontSize: 12
-                onClicked: root.clicked()
+                onClicked: root.selectClicked()
             }
             CustomButton{
                 id: editButton
-                width: 25
+                width: 45
                 height: 20
                 anchors.right: parent.right
                 text: "Edit"
@@ -45,7 +46,7 @@ Item {
                 bgColor: "transparent"
                 bgColorPressed: "transparent"
                 textColor: "#059669"
-                onClicked: root.clicked()
+                onClicked: root.editClicked()
             }
 //            Text {
 //                id: editButton

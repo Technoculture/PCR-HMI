@@ -6,10 +6,12 @@ Item {
     implicitWidth: 286
     implicitHeight: 36
 
+//    signal clicked()
     property alias inputText: field.text
     property string placehText: ""
     property alias typeOfInput: field.echoMode
     property color myBorder: "#64748B"
+    property bool fixed: false
     Rectangle{
         id: input
         anchors.fill: parent
@@ -26,6 +28,7 @@ Item {
             placeholderText: placehText
             anchors.right: parent.right
             font.family: "Work Sans Medium"
+            readOnly: fixed
             background: Rectangle{
                 id: activeBorder
                 anchors.fill: parent
@@ -35,5 +38,10 @@ Item {
             }
 //            onFocusChanged: showKeyboard()
         }
+//        MouseArea {
+//            id: ma
+//            anchors.fill: parent
+//            onClicked: root.clicked()
+//        }
     }
 }

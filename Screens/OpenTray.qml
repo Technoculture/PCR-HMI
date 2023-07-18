@@ -76,24 +76,9 @@ Item {
                         butRadius: 4
                         anchors.centerIn: parent
                         onClicked: requestPatientDetails(1)
-//                            if(main.state=="") main.state="Close"
-//                            else main.state=""
                     }
                 }
             }
-//            states: [
-//                State {
-//                    name: "Close"
-//                    PropertyChanges {
-//                        target: illustrate
-//                        source: "../Assets/Close Tray.png"
-//                    }
-//                    PropertyChanges {
-//                        target: tray
-//                        text: "Close Tray"
-//                    }
-//                }
-//            ]
         }
     }
 }

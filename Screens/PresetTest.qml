@@ -6,7 +6,7 @@ Item {
     id:root
 
     signal goBackWithTestName(var testNumber, var testname)
-    signal requestPatientDetails()
+    signal requestPatientDetails(var slotNumber)
 
     property int testNumber: -1
     Rectangle{
@@ -37,7 +37,7 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "BackArrowIcon.png"
-                            onClicked: requestPatientDetails()
+                            onClicked: requestPatientDetails(testNumber)
                         }
                         Text {
                             id: settings

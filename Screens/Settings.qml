@@ -1,11 +1,12 @@
 import QtQuick 2.15
-import QtQuick.Controls 1.4
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.3
 import "../Components"
 
 Item {
     id:root
     signal requestBack()
-    signal requestCustomTest()
+    signal requestCustomTest(var newTest, int index)
 
     property int row: 0
     Rectangle{
@@ -287,8 +288,9 @@ Item {
                                         font.family: "Work Sans Medium"
                                     }
                                     InputBox{
+                                        id: newTest
                                         width: 212
-                                        inputText: "Name the Test"
+                                        placehText: "Name the Test"
                                     }
                                     CustomButton{
                                         id: next
@@ -297,7 +299,7 @@ Item {
                                         text: "Next"
                                         labelFontSize: 14
                                         butRadius: 4
-                                        onClicked: requestCustomTest()
+                                        onClicked: requestCustomTest(newTest.inputText,-1)
                                     }
                                 }
                             }
@@ -315,22 +317,24 @@ Item {
                                     color: "#334155"
                                     font.family: "Work Sans Medium"
                                 }
-                                Grid{
-                                    columns: 1
-                                    rowSpacing: 10
-                                    anchors.top: availTest.bottom
-                                    TestNameCustom{
-                                        testText: "Custom Test 1"
+                                ListView {
+                                    id: listView
+                                    width: parent.width
+                                    height: 110
+                                    anchors {
+                                        topMargin: 2;
+                                        top: availTest.bottom
                                     }
-                                    TestNameCustom{
-                                        testText: "Custom Test 2"
+                                    model: testsTable
+                                    delegate: TestNameCustom{
+                                        testText: model.test_name
+                                        onEditClicked: editBox.visible=true;
                                     }
-                                    TestNameCustom{
-                                        testText: "Custom Test 3"
+                                    ScrollBar.vertical: ScrollBar {
+                                        anchors.right: parent.right
+                                        visible: listView.contentHeight > listView.height ? true : false
                                     }
-                                    TestNameCustom{
-                                        testText: "Custom Test 4"
-                                    }
+                                    spacing: 10
                                 }
                             }
                         }
@@ -404,17 +408,59 @@ Item {
                     ]
                 }
             }
-            Rectangle{
-                id: editBox
-                width: 247
-                height: 191
-                radius: 4
-                visible: false
-                Text {
-                    id: title
-                    text: "Enter new Name"
-                    font.pixelSize: 16
-                    font.family: "Work Sans Medium"
+        }
+    }
+    Rectangle{
+        id: editBox
+        width: 247
+        height: 191
+        radius: 4
+        visible: false
+        anchors.centerIn: parent
+        color: "#ECFDF5"
+        border.width: 1
+        border.color: "#000000"
+        Grid{
+            width: 187
+            height: 131
+            anchors.centerIn: parent
+            columns: 1
+            rowSpacing: 14
+            Text {
+                id: title
+                text: "Rename the Test"
+                font.pixelSize: 14
+                font.family: "Work Sans Medium"
+            }
+            InputBox{
+                id: newName
+                width: 187
+                placehText: "Enter new Name"
+            }
+            Row{
+                spacing: 10
+                CustomButton{
+                    id: okay
+                    width: 49
+                    height: 36
+                    text: "Okay"
+                    labelFontSize: 14
+                    butRadius: 4
+                    onClicked: {
+                        editBox.visible=false;
+                        requestCustomTest(newName.inputText,listView.currentIndex);
+                    }
+                }
+                CustomButton{
+                    id: cancel
+                    width: 60
+                    height: 36
+                    text: "Cancel"
+                    labelFontSize: 14
+                    butRadius: 4
+                    onClicked: {
+                        editBox.visible=false;
+                    }
                 }
             }
         }

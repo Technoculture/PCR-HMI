@@ -81,7 +81,7 @@ Item {
                             columnSpacing: 5
                             SlotPatientTab{
                                 id: slot1
-                                text: testName1
+                                text: detailsTable.roleFromRow(0,"test_name")?detailsTable.roleFromRow(0,"test_name"):testName1
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 tabColor: "#D1FAE5"
@@ -92,7 +92,7 @@ Item {
                             }
                             SlotPatientTab{
                                 id: slot2
-                                text: testName2
+                                text: detailsTable.roleFromRow(1,"test_name")?detailsTable.roleFromRow(1,"test_name"):testName2
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 onClicked: {
@@ -102,7 +102,7 @@ Item {
                             }
                             SlotPatientTab{
                                 id: slot3
-                                text: testName3
+                                text: detailsTable.roleFromRow(2,"test_name")?detailsTable.roleFromRow(2,"test_name"):testName3
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 onClicked: {
@@ -112,7 +112,7 @@ Item {
                             }
                             SlotPatientTab{
                                 id: slot4
-                                text: testName4
+                                text: detailsTable.roleFromRow(3,"test_name")?detailsTable.roleFromRow(3,"test_name"):testName4
                                 textColor: "black"
                                 iconSource: "Down_Arrow.png"
                                 onClicked: {
@@ -169,18 +169,22 @@ Item {
                             InputBox{
                                 id: doctor
                                 placehText: "Referred Doctor"
+                                inputText: detailsTable.roleFromRow(number-1,"doctor")?detailsTable.roleFromRow(number-1,"doctor"):""
                             }
                             InputBox{
                                 id: patientID
                                 placehText: "Patient's ID"
+                                inputText: detailsTable.roleFromRow(number-1,"patient_id")?detailsTable.roleFromRow(number-1,"patient_id"):""
                             }
                             InputBox{
                                 id: patientName
                                 placehText: "Patient's Name"
+                                inputText: detailsTable.roleFromRow(number-1,"patient_name")?detailsTable.roleFromRow(number-1,"patient_name"):""
                             }
                             InputBox{
                                 id: age
                                 placehText: "Patient's Age"
+                                inputText: detailsTable.roleFromRow(number-1,"age")?detailsTable.roleFromRow(number-1,"age"):""
                             }
                         }
                     }
@@ -202,13 +206,14 @@ Item {
                                 ExclusiveGroup{id: group}
                                 RadioButton{
                                     id: male
-                                    checked: true
+                                    checked: detailsTable.roleFromRow(number-1,"sex") ? (detailsTable.roleFromRow(number-1,"sex")==="Male" ? true : false) : true;
                                     exclusiveGroup: group
                                     text: "Male"
                                     anchors.verticalCenter: parent.verticalCenter
                                 }
                                 RadioButton{
                                     id: female
+                                    checked: !male.checked
                                     exclusiveGroup: group
                                     text: "Female"
                                     anchors.verticalCenter: parent.verticalCenter
@@ -275,10 +280,10 @@ Item {
                         }
                         if(doctor.inputText!="" && patientID.inputText!="" && patientName.inputText!="" && age.inputText!=""){
                             var selectedTest;
-                            if(number===1)selectedTest=testName1;
-                            else if(number===2)selectedTest=testName2;
-                            else if(number===3)selectedTest=testName3;
-                            else if(number===4)selectedTest=testName4;
+                            if(number===1)selectedTest=slot1.text;
+                            else if(number===2)selectedTest=slot2.text;
+                            else if(number===3)selectedTest=slot3.text;
+                            else if(number===4)selectedTest=slot4.text;
                             var data = patientID.inputText+";";
                             data += number+";";
                             data += patientName.inputText+";";
@@ -288,7 +293,10 @@ Item {
                             data += doctor.inputText+";";
                             data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
 
-                            detailsTable.addRow(root.index,data);
+                            if(detailsTable.roleFromRow(number-1,"patient_id"))
+                                detailsTable.addRow(number-1,data);
+                            else
+                                detailsTable.addRow(index,data);
                             requestSlots()
                         }
                     }
