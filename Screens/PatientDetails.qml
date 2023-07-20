@@ -234,71 +234,91 @@ Item {
                         }
                     }
                 }
-                CustomButton{
-                    id: done
-                    width: 66
-                    height: 36
-                    text: "Done"
-                    labelFontSize: 14
-                    butRadius: 4
-                    onClicked: {
-                        if(doctor.inputText==""){
-                            doctor.myBorder="#F02D1F"
-                            if(patientID.inputText!="")
-                                patientID.myBorder="#64748B"
-                            if(patientName.inputText!="")
-                                patientName.myBorder="#64748B"
-                            if(age.inputText!="")
-                                age.myBorder="#64748B"
-                        }
-                        if(patientID.inputText==""){
-                            patientID.myBorder="#F02D1F"
-                            if(doctor.inputText!="")
-                                doctor.myBorder="#64748B"
-                            if(patientName.inputText!="")
-                                patientName.myBorder="#64748B"
-                            if(age.inputText!="")
-                                age.myBorder="#64748B"
-                        }
-                        if(patientName.inputText==""){
-                            patientName.myBorder="#F02D1F"
-                            if(patientID.inputText!="")
-                                patientID.myBorder="#64748B"
-                            if(doctor.inputText!="")
-                                doctor.myBorder="#64748B"
-                            if(age.inputText!="")
-                                age.myBorder="#64748B"
-                        }
-                        if(age.inputText==""){
-                            age.myBorder="#F02D1F"
-                            if(patientID.inputText!="")
-                                patientID.myBorder="#64748B"
-                            if(patientName.inputText!="")
-                                patientName.myBorder="#64748B"
-                            if(doctor.inputText!="")
-                                doctor.myBorder="#64748B"
-                        }
-                        if(doctor.inputText!="" && patientID.inputText!="" && patientName.inputText!="" && age.inputText!=""){
+                Rectangle{
+                    width: parent.width
+                    height: done.height
+                    CustomButton{
+                        id: done
+                        width: 66
+                        height: 36
+                        text: "Done"
+                        labelFontSize: 14
+                        butRadius: 4
+                        onClicked: {
                             var selectedTest;
                             if(number===1)selectedTest=slot1.text;
                             else if(number===2)selectedTest=slot2.text;
                             else if(number===3)selectedTest=slot3.text;
                             else if(number===4)selectedTest=slot4.text;
-                            var data = patientID.inputText+";";
-                            data += number+";";
-                            data += patientName.inputText+";";
-                            data += ((male.checked===true)?"Male":"Female")+";";
-                            data += age.inputText+";";
-                            data += selectedTest+";";
-                            data += doctor.inputText+";";
-                            data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
 
-                            if(detailsTable.roleFromRow(number-1,"patient_id"))
-                                detailsTable.addRow(number-1,data);
-                            else
-                                detailsTable.addRow(index,data);
-                            requestSlots()
+                            if(doctor.inputText==""){
+                                doctor.myBorder="#F02D1F"
+                                if(patientID.inputText!="")
+                                    patientID.myBorder="#64748B"
+                                if(patientName.inputText!="")
+                                    patientName.myBorder="#64748B"
+                                if(age.inputText!="")
+                                    age.myBorder="#64748B"
+                            }
+                            if(patientID.inputText==""){
+                                patientID.myBorder="#F02D1F"
+                                if(doctor.inputText!="")
+                                    doctor.myBorder="#64748B"
+                                if(patientName.inputText!="")
+                                    patientName.myBorder="#64748B"
+                                if(age.inputText!="")
+                                    age.myBorder="#64748B"
+                            }
+                            if(patientName.inputText==""){
+                                patientName.myBorder="#F02D1F"
+                                if(patientID.inputText!="")
+                                    patientID.myBorder="#64748B"
+                                if(doctor.inputText!="")
+                                    doctor.myBorder="#64748B"
+                                if(age.inputText!="")
+                                    age.myBorder="#64748B"
+                            }
+                            if(age.inputText==""){
+                                age.myBorder="#F02D1F"
+                                if(patientID.inputText!="")
+                                    patientID.myBorder="#64748B"
+                                if(patientName.inputText!="")
+                                    patientName.myBorder="#64748B"
+                                if(doctor.inputText!="")
+                                    doctor.myBorder="#64748B"
+                            }
+                            if(selectedTest.indexOf("Slot")!==-1){
+                                alert.text="Choose test first!"
+                            }
+
+                            else if(doctor.inputText!="" && patientID.inputText!="" && patientName.inputText!=""
+                                    && age.inputText!="" && selectedTest.indexOf("Slot")===-1){
+                                var data = patientID.inputText+";";
+                                data += number+";";
+                                data += patientName.inputText+";";
+                                data += ((male.checked===true)?"Male":"Female")+";";
+                                data += age.inputText+";";
+                                data += selectedTest+";";
+                                data += doctor.inputText+";";
+                                data += Qt.formatTime(new Date(),"hh:mm:ss")+";";
+
+                                if(detailsTable.roleFromRow(number-1,"patient_id"))
+                                    detailsTable.addRow(number-1,data);
+                                else
+                                    detailsTable.addRow(index,data);
+                                requestSlots()
+                            }
                         }
+                    }
+                    Text {
+                        id: alert
+                        text: ""
+                        font.family: "Work Sans Medium"
+                        font.pixelSize: 16
+                        color: "#475569"
+                        leftPadding: 10
+                        anchors.left: done.right
+                        anchors.verticalCenter: done.verticalCenter
                     }
                 }
             }

@@ -73,27 +73,31 @@ Item {
                             columnSpacing: 23
                             rowSpacing: 23
                             SlotsDetails{
+                                id: slot1
                                 slotNo: 1
-                                testName: "MTB"
-                                patientName: "Ashok Singh"
+                                testName: detailsTable.roleFromRow(0,"test_name") ? detailsTable.roleFromRow(0,"test_name") : "No Data"
+                                patientName: detailsTable.roleFromRow(0,"patient_name") ? detailsTable.roleFromRow(0,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(1)
                             }
                             SlotsDetails{
+                                id: slot2
                                 slotNo: 2
-                                testName: "MTB Plus"
-                                patientName: "Rashid Khan"
+                                testName: detailsTable.roleFromRow(1,"test_name") ? detailsTable.roleFromRow(1,"test_name") : "No Data"
+                                patientName: detailsTable.roleFromRow(1,"patient_name") ? detailsTable.roleFromRow(1,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(2)
                             }
                             SlotsDetails{
+                                id: slot3
                                 slotNo: 3
-                                testName: "MTB"
-                                patientName: "Rashmi Singh"
+                                testName: detailsTable.roleFromRow(2,"test_name") ? detailsTable.roleFromRow(2,"test_name") : "No Data"
+                                patientName: detailsTable.roleFromRow(2,"patient_name") ? detailsTable.roleFromRow(2,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(3)
                             }
                             SlotsDetails{
+                                id: slot4
                                 slotNo: 4
-                                testName: "MTB"
-                                patientName: "Rashmi Singh"
+                                testName: detailsTable.roleFromRow(3,"test_name") ? detailsTable.roleFromRow(3,"test_name") : "No Data"
+                                patientName: detailsTable.roleFromRow(3,"patient_name") ? detailsTable.roleFromRow(3,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(4)
                             }
                         }
@@ -108,11 +112,22 @@ Item {
                                 text: "Start Tests"
                                 labelFontSize: 12
                                 butRadius: 4
-                                onClicked: requestResults()
+                                onClicked: {
+                                    var remain="";
+                                    if(slot1.testName=="No Data")remain+=" 1";
+                                    if(slot2.testName=="No Data")remain+=" 2";
+                                    if(slot3.testName=="No Data")remain+=" 3";
+                                    if(slot4.testName=="No Data")remain+=" 4";
+                                    if(remain!="")
+                                        message.text="Remaining SLots to fill:"+remain;
+                                    else{
+                                        requestResults()
+                                    }
+                                }
                             }
                             Text {
                                 id: message
-                                text: "Error in Slot 4. Please try again."
+                                text: ""
                                 color: "#DC2626"
                                 font.family: "Work Sans Medium"
                                 anchors.right: parent.right

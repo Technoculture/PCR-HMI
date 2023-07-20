@@ -20,7 +20,7 @@ Item {
             width: 58
             height: 34
             anchors.right: parent.right
-            text: "Save"
+            text: "Select"
             bgColor: "#059669"
             labelFontSize: 12
             butRadius: 4
