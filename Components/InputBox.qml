@@ -6,7 +6,7 @@ Item {
     implicitWidth: 286
     implicitHeight: 36
 
-//    signal clicked()
+    signal showKeyboard()
     property alias inputText: field.text
     property string placehText: ""
     property alias typeOfInput: field.echoMode
@@ -36,7 +36,7 @@ Item {
                 radius: 4
                 border.width: 1; border.color: myBorder
             }
-//            onFocusChanged: showKeyboard()
+            onFocusChanged: showKeyboard()
         }
 //        MouseArea {
 //            id: ma

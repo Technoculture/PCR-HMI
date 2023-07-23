@@ -65,12 +65,5 @@ Window {
                 screenLoader.item.currentState="4"
             }
         }
-}
-    Loader {
-        id: panelIO
-        width: parent.width
-        height: parent.height
-        source: "./Components/Keyboard.qml"
-        visible: false
     }
 }

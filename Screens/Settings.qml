@@ -291,6 +291,7 @@ Item {
                                         id: newTest
                                         width: 212
                                         placehText: "Name the Test"
+                                        onShowKeyboard: virtualKeyboard.visible=true
                                     }
                                     CustomButton{
                                         id: next
@@ -327,6 +328,7 @@ Item {
                                     }
                                     model: testsTable
                                     delegate: TestNameCustom{
+                                        id: custom
                                         testText: model.test_name
                                         onEditClicked: editBox.visible=true;
                                     }
@@ -410,6 +412,30 @@ Item {
             }
         }
     }
+    Keyboard {
+        id: virtualKeyboard
+        focus: false
+        anchors.bottom: parent.bottom
+        visible: false
+        onKeyPressed: {
+            var cursorPos = activeFocusItem.cursorPosition
+            activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + key + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+            activeFocusItem.cursorPosition = Math.max(0, cursorPos + key.length)
+        }
+        onBackspacePressed: {
+            var cursorPos = activeFocusItem.cursorPosition
+            activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos -1) + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+            activeFocusItem.cursorPosition = Math.max(0, cursorPos - 1)
+        }
+        onDeletePressed: {
+            var cursorPos = activeFocusItem.cursorPosition
+            activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + activeFocusItem.text.slice(cursorPos+1, activeFocusItem.text.length)
+            activeFocusItem.cursorPosition = Math.max(0, cursorPos)
+        }
+        onEnterPressed: {
+            next.clicked()
+        }
+    }
     Rectangle{
         id: editBox
         width: 247
@@ -436,6 +462,7 @@ Item {
                 id: newName
                 width: 187
                 placehText: "Enter new Name"
+                onShowKeyboard: virtualKeyboard1.visible=true
             }
             Row{
                 spacing: 10
@@ -463,6 +490,30 @@ Item {
                     }
                 }
             }
+        }
+    }
+    Keyboard {
+        id: virtualKeyboard1
+        focus: false
+        anchors.bottom: parent.bottom
+        visible: false
+        onKeyPressed: {
+            var cursorPos = activeFocusItem.cursorPosition
+            activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + key + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+            activeFocusItem.cursorPosition = Math.max(0, cursorPos + key.length)
+        }
+        onBackspacePressed: {
+            var cursorPos = activeFocusItem.cursorPosition
+            activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos -1) + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+            activeFocusItem.cursorPosition = Math.max(0, cursorPos - 1)
+        }
+        onDeletePressed: {
+            var cursorPos = activeFocusItem.cursorPosition
+            activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + activeFocusItem.text.slice(cursorPos+1, activeFocusItem.text.length)
+            activeFocusItem.cursorPosition = Math.max(0, cursorPos)
+        }
+        onEnterPressed: {
+            okay.clicked()
         }
     }
 }

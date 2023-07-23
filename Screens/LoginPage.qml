@@ -62,11 +62,13 @@ Item {
                         InputBox{
                             id:username
                             placehText: "Username"
+                            onShowKeyboard: virtualKeyboard.visible=true
                         }
                         InputBox{
                             id: pass
                             placehText: "Password"
                             typeOfInput: TextInput.Password
+                            onShowKeyboard: virtualKeyboard.visible=true
                         }
                         Text {
                             id: showPassword
@@ -126,6 +128,30 @@ Item {
                     iconSource: "SettingsActive.png"
                     onClicked: requestSettings()
                 }
+            }
+        }
+        Keyboard {
+            id: virtualKeyboard
+            focus: false
+            anchors.bottom: parent.bottom
+            visible: false
+            onKeyPressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + key + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos + key.length)
+            }
+            onBackspacePressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos -1) + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos - 1)
+            }
+            onDeletePressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + activeFocusItem.text.slice(cursorPos+1, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos)
+            }
+            onEnterPressed: {
+                loginButton.clicked()
             }
         }
     }

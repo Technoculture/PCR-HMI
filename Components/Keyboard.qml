@@ -12,10 +12,12 @@ Item {
     property bool shift: false
     signal keyPressed(var key)
     signal backspacePressed()
+    signal deletePressed()
+    signal enterPressed()
     signal hidePressed()
     property int keyHeight: 36
     property int keyWidth: 40
-    height: parent.height * 0.5
+    height: parent.height * 0.45
     width: parent.width
     anchors.bottom: parent.bottom
     z: 100
@@ -174,7 +176,7 @@ Item {
                     butRadius: 4
                     labelFontSize: 40
                     text: "↵"
-                    onClicked: checkKeyPress("Mrs.")
+                    onClicked: checkKeyPress("enter")
                 }
             }
         }
@@ -186,6 +188,10 @@ Item {
             visible = false
         else if (key === "↵")
             visible = false
+        else if (key === "delete")
+            deletePressed()
+        else if (key === "enter")
+            enterPressed()
         else
             keyPressed(shift ? String(key).toUpperCase() : key)
         shift = false

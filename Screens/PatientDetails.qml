@@ -170,21 +170,25 @@ Item {
                                 id: doctor
                                 placehText: "Referred Doctor"
                                 inputText: detailsTable.roleFromRow(number-1,"doctor")?detailsTable.roleFromRow(number-1,"doctor"):""
+                                onShowKeyboard: virtualKeyboard.visible=true
                             }
                             InputBox{
                                 id: patientID
                                 placehText: "Patient's ID"
                                 inputText: detailsTable.roleFromRow(number-1,"patient_id")?detailsTable.roleFromRow(number-1,"patient_id"):""
+                                onShowKeyboard: virtualKeyboard.visible=true
                             }
                             InputBox{
                                 id: patientName
                                 placehText: "Patient's Name"
                                 inputText: detailsTable.roleFromRow(number-1,"patient_name")?detailsTable.roleFromRow(number-1,"patient_name"):""
+                                onShowKeyboard: virtualKeyboard.visible=true
                             }
                             InputBox{
                                 id: age
                                 placehText: "Patient's Age"
                                 inputText: detailsTable.roleFromRow(number-1,"age")?detailsTable.roleFromRow(number-1,"age"):""
+                                onShowKeyboard: virtualKeyboard.visible=true
                             }
                         }
                     }
@@ -235,6 +239,7 @@ Item {
                     }
                 }
                 Rectangle{
+                    id: doneButton
                     width: parent.width
                     height: done.height
                     CustomButton{
@@ -321,6 +326,30 @@ Item {
                         anchors.verticalCenter: done.verticalCenter
                     }
                 }
+            }
+        }
+        Keyboard {
+            id: virtualKeyboard
+            focus: false
+            anchors.bottom: parent.bottom
+            visible: false
+            onKeyPressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + key + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos + key.length)
+            }
+            onBackspacePressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos -1) + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos - 1)
+            }
+            onDeletePressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + activeFocusItem.text.slice(cursorPos+1, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos)
+            }
+            onEnterPressed: {
+                doneButton.clicked()
             }
         }
     }
