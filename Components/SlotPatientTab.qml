@@ -29,14 +29,15 @@ Item {
                 font.pixelSize: labelFontSize
                 color: textColor
                 font.family: "Work Sans"
-                leftPadding: 20
+                leftPadding: 15
                 anchors.verticalCenter: parent.verticalCenter
             }
             Image {
                 id: icon
                 source: "../Assets/Icons/"+iconSource
-                scale: 0.66
+                scale: 0.8
                 anchors.right: parent.right
+                anchors.verticalCenter: parent.verticalCenter
             }
 //        }
         MouseArea {

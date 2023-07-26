@@ -85,6 +85,7 @@ Item {
                                 testName: detailsTable.roleFromRow(1,"test_name") ? detailsTable.roleFromRow(1,"test_name") : "No Data"
                                 patientName: detailsTable.roleFromRow(1,"patient_name") ? detailsTable.roleFromRow(1,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(2)
+                                opacity: testName=="No data"?0:1
                             }
                             SlotsDetails{
                                 id: slot3
@@ -92,6 +93,7 @@ Item {
                                 testName: detailsTable.roleFromRow(2,"test_name") ? detailsTable.roleFromRow(2,"test_name") : "No Data"
                                 patientName: detailsTable.roleFromRow(2,"patient_name") ? detailsTable.roleFromRow(2,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(3)
+                                opacity: testName=="No data"?0:1
                             }
                             SlotsDetails{
                                 id: slot4
@@ -99,6 +101,7 @@ Item {
                                 testName: detailsTable.roleFromRow(3,"test_name") ? detailsTable.roleFromRow(3,"test_name") : "No Data"
                                 patientName: detailsTable.roleFromRow(3,"patient_name") ? detailsTable.roleFromRow(3,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(4)
+                                opacity: testName=="No data"?0:1
                             }
                         }
                         Rectangle{
@@ -112,18 +115,8 @@ Item {
                                 text: "Start Tests"
                                 labelFontSize: 12
                                 butRadius: 4
-                                onClicked: {
-                                    var remain="";
-                                    if(slot1.testName=="No Data")remain+=" 1";
-                                    if(slot2.testName=="No Data")remain+=" 2";
-                                    if(slot3.testName=="No Data")remain+=" 3";
-                                    if(slot4.testName=="No Data")remain+=" 4";
-                                    if(remain!="")
-                                        message.text="Remaining SLots to fill:"+remain;
-                                    else{
+                                onClicked:
                                         requestResults()
-                                    }
-                                }
                             }
                             Text {
                                 id: message

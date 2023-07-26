@@ -13,6 +13,7 @@ public:
     Q_INVOKABLE QVariant roleFromRow(int row, QString roleName);
     Q_INVOKABLE void removeRow(int row);
     Q_INVOKABLE void addRow(int row, QString newData);
+    int countRecords();
 };
 
 #endif // DETAILS_H

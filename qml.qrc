@@ -47,5 +47,7 @@
         <file>Components/Keyboard.qml</file>
         <file>Components/WifiItems.qml</file>
         <file>pcr.db</file>
+        <file>Assets/Illustration.png</file>
+        <file>Assets/Icons/Slot done.png</file>
     </qresource>
 </RCC>

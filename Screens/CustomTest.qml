@@ -113,6 +113,7 @@ Item {
                                         id: temperature
                                         propText: "Temperature (°C)"
                                         anchors.centerIn: parent
+                                        onClicked: virtualKeyboard.visible=true
                                     }
                                 }
                                 Rectangle{
@@ -122,6 +123,7 @@ Item {
                                         id: time
                                         propText: "Time (sec)"
                                         anchors.centerIn: parent
+                                        onClicked: virtualKeyboard.visible=true
                                     }
                                 }
                                 Rectangle{
@@ -147,21 +149,29 @@ Item {
                                             labelFontSize: 14
                                             butRadius: 4
                                             onClicked: {
-                                                var data="";
-                                                data+=settings.text+";";
-                                                data+=rtprocess.myValue+";";
-                                                data+=hotprocess.myValue+";";
-                                                data+=denaturation.myValue+";";
-                                                data+=annealing.myValue+";";
-                                                data+=extension.myValue+";";
-                                                data+=final_ext.myValue+";";
-                                                data+=temperature.propValue+";";
-                                                data+=time.propValue+";";
-                                                data+=loop.propValue+";";
+                                                if(temperature.propValue==""){
+                                                    temperature.myborder="#F02D1F"
+                                                }
+                                                if(time.propValue==""){
+                                                    time.myborder="#F02D1F"
+                                                }
+                                                if(temperature.propValue!="" && time.propValue!=""){
+                                                    var data="";
+                                                    data+=settings.text+";";
+                                                    data+=rtprocess.myValue+";";
+                                                    data+=hotprocess.myValue+";";
+                                                    data+=denaturation.myValue+";";
+                                                    data+=annealing.myValue+";";
+                                                    data+=extension.myValue+";";
+                                                    data+=final_ext.myValue+";";
+                                                    data+=temperature.propValue+";";
+                                                    data+=time.propValue+";";
+                                                    data+=loop.propValue+";";
 
-                                                testsTable.addRow(index,data);
+                                                    testsTable.addRow(index,data);
 
-                                                requestSettings()
+                                                    requestSettings()
+                                                }
                                             }
                                         }
                                     }
@@ -170,6 +180,30 @@ Item {
                         }
                     }
                 }
+            }
+        }
+        Keyboard {
+            id: virtualKeyboard
+            focus: false
+            anchors.bottom: parent.bottom
+            visible: false
+            onKeyPressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + key + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos + key.length)
+            }
+            onBackspacePressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos -1) + activeFocusItem.text.slice(cursorPos, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos - 1)
+            }
+            onDeletePressed: {
+                var cursorPos = activeFocusItem.cursorPosition
+                activeFocusItem.text = activeFocusItem.text.slice(0, cursorPos) + activeFocusItem.text.slice(cursorPos+1, activeFocusItem.text.length)
+                activeFocusItem.cursorPosition = Math.max(0, cursorPos)
+            }
+            onEnterPressed: {
+                save.clicked()
             }
         }
     }

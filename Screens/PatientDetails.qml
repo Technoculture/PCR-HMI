@@ -13,6 +13,7 @@ Item {
     property string testName2: "Slot 2"
     property string testName3: "Slot 3"
     property string testName4: "Slot 4"
+    property int count: detailsTable.countRecords()
     property int number: -1
     property int index: -1
     property string currentState: number.toString()
@@ -83,7 +84,7 @@ Item {
                                 id: slot1
                                 text: detailsTable.roleFromRow(0,"test_name")?detailsTable.roleFromRow(0,"test_name"):testName1
                                 textColor: "black"
-                                iconSource: "Down_Arrow.png"
+                                iconSource: testName1=="Slot 1"?"Down_Arrow.png":"Slot done.png"
                                 tabColor: "#D1FAE5"
                                 onClicked: {
                                     slotTabs.state="1"
@@ -94,7 +95,7 @@ Item {
                                 id: slot2
                                 text: detailsTable.roleFromRow(1,"test_name")?detailsTable.roleFromRow(1,"test_name"):testName2
                                 textColor: "black"
-                                iconSource: "Down_Arrow.png"
+                                iconSource: testName2=="Slot 2"?"Down_Arrow.png":"Slot done.png"
                                 onClicked: {
                                     slotTabs.state="2"
                                     number=2
@@ -104,7 +105,7 @@ Item {
                                 id: slot3
                                 text: detailsTable.roleFromRow(2,"test_name")?detailsTable.roleFromRow(2,"test_name"):testName3
                                 textColor: "black"
-                                iconSource: "Down_Arrow.png"
+                                iconSource: testName3=="Slot 3"?"Down_Arrow.png":"Slot done.png"
                                 onClicked: {
                                     slotTabs.state="3"
                                     number=3
@@ -114,7 +115,7 @@ Item {
                                 id: slot4
                                 text: detailsTable.roleFromRow(3,"test_name")?detailsTable.roleFromRow(3,"test_name"):testName4
                                 textColor: "black"
-                                iconSource: "Down_Arrow.png"
+                                iconSource: testName4=="Slot 4"?"Down_Arrow.png":"Slot done.png"
                                 onClicked: {
                                     slotTabs.state="4"
                                     number=4
@@ -251,10 +252,18 @@ Item {
                         butRadius: 4
                         onClicked: {
                             var selectedTest;
-                            if(number===1)selectedTest=slot1.text;
-                            else if(number===2)selectedTest=slot2.text;
-                            else if(number===3)selectedTest=slot3.text;
-                            else if(number===4)selectedTest=slot4.text;
+                            if(number===1){
+                                selectedTest=slot1.text;
+                            }
+                            else if(number===2){
+                                selectedTest=slot2.text;
+                            }
+                            else if(number===3){
+                                selectedTest=slot3.text;
+                            }
+                            else if(number===4){
+                                selectedTest=slot4.text;
+                            }
 
                             if(doctor.inputText==""){
                                 doctor.myBorder="#F02D1F"
@@ -317,7 +326,7 @@ Item {
                     }
                     Text {
                         id: alert
-                        text: ""
+                        text: count +" Patients added"
                         font.family: "Work Sans Medium"
                         font.pixelSize: 16
                         color: "#475569"
@@ -349,7 +358,7 @@ Item {
                 activeFocusItem.cursorPosition = Math.max(0, cursorPos)
             }
             onEnterPressed: {
-                doneButton.clicked()
+                done.clicked()
             }
         }
     }

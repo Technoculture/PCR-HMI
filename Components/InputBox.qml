@@ -36,7 +36,14 @@ Item {
                 radius: 4
                 border.width: 1; border.color: myBorder
             }
-            onFocusChanged: showKeyboard()
+            onFocusChanged: {
+                if(!focus)
+                    myBorder="#64748B"
+                else{
+                    myBorder="#50DE40"
+                    showKeyboard()
+                }
+            }
         }
 //        MouseArea {
 //            id: ma
