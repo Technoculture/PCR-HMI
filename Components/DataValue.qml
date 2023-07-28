@@ -6,17 +6,16 @@ Item {
     property alias dataContent: data.text
     property alias dataValueContent: dataValue.text
     property int fontSize: 16
-    property int topPaddingExtra: 10
     Rectangle{
         id: dataRec
-        width: 111
+        width: 110
         height: parent.height
         color: "transparent"
         Text {
             id: data
             text: "Referred by"
             padding: 10
-            topPadding: topPaddingExtra
+            leftPadding: 20
             font.pixelSize: fontSize
             font.letterSpacing: 0.5
             font.family: "Work Sans"
@@ -25,7 +24,7 @@ Item {
     }
     Rectangle{
         id: dataValueRec
-        width: 181
+        width: 180
         height: parent.height
         anchors.right: parent.right
         color: "transparent"
@@ -33,7 +32,7 @@ Item {
             id: dataValue
             text: "Dr. Anil Sumar"
             padding: 10
-            topPadding: topPaddingExtra
+            leftPadding: 20
             font.pixelSize: fontSize
             font.family: "Work Sans Medium"
             color: "#475569"

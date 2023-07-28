@@ -2,11 +2,11 @@ import QtQuick 2.15
 
 Item {
     id: root
-    implicitWidth: 148
+    implicitWidth: 151
     implicitHeight: 36
     signal clicked()
     property alias text: label.text
-    property color tabColor: "#E2E8F0"
+    property color tabColor: "#D1FAE5"
     property string iconSource: ""
     property int labelFontSize: root.height * 0.45
     property color textColor: "white"
