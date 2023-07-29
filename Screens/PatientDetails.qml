@@ -13,7 +13,6 @@ Item {
     property string testName2: "Slot 2"
     property string testName3: "Slot 3"
     property string testName4: "Slot 4"
-    property int count: detailsTable.countRecords()
     property int number: -1
     property int index: -1
     property string currentState: number.toString()
@@ -82,6 +81,7 @@ Item {
                             columnSpacing: 5
                             SlotPatientTab{
                                 id: slot1
+                                width: 148
                                 text: detailsTable.roleFromRow(0,"test_name")?detailsTable.roleFromRow(0,"test_name"):testName1
                                 textColor: "black"
                                 iconSource: testName1=="Slot 1"?"Down_Arrow.png":"Slot done.png"
@@ -93,6 +93,7 @@ Item {
                             }
                             SlotPatientTab{
                                 id: slot2
+                                width: 148
                                 text: detailsTable.roleFromRow(1,"test_name")?detailsTable.roleFromRow(1,"test_name"):testName2
                                 textColor: "black"
                                 iconSource: testName2=="Slot 2"?"Down_Arrow.png":"Slot done.png"
@@ -103,6 +104,7 @@ Item {
                             }
                             SlotPatientTab{
                                 id: slot3
+                                width: 148
                                 text: detailsTable.roleFromRow(2,"test_name")?detailsTable.roleFromRow(2,"test_name"):testName3
                                 textColor: "black"
                                 iconSource: testName3=="Slot 3"?"Down_Arrow.png":"Slot done.png"
@@ -113,6 +115,7 @@ Item {
                             }
                             SlotPatientTab{
                                 id: slot4
+                                width: 148
                                 text: detailsTable.roleFromRow(3,"test_name")?detailsTable.roleFromRow(3,"test_name"):testName4
                                 textColor: "black"
                                 iconSource: testName4=="Slot 4"?"Down_Arrow.png":"Slot done.png"
@@ -326,7 +329,7 @@ Item {
                     }
                     Text {
                         id: alert
-                        text: count +" Patients added"
+                        text: ""
                         font.family: "Work Sans Medium"
                         font.pixelSize: 16
                         color: "#475569"

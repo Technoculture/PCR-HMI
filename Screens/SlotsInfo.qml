@@ -7,7 +7,6 @@ Item {
 
     signal requestPatientDetails(var slotNumber)
     signal requestResults()
-    signal requestBack()
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -32,11 +31,11 @@ Item {
                         FuncButton{
                             id: back
                             height: logo.height
-                            text: "Signout"
+                            text: "Back"
                             textColor: "#64748B"
                             labelFontSize: 16
-                            iconSource: "SignOut.png"
-                            onClicked: requestBack()
+                            iconSource: "BackArrowIcon.png"
+                            onClicked: requestPatientDetails(1)
                         }
                         Text {
                             id: settings
@@ -85,7 +84,7 @@ Item {
                                 testName: detailsTable.roleFromRow(1,"test_name") ? detailsTable.roleFromRow(1,"test_name") : "No Data"
                                 patientName: detailsTable.roleFromRow(1,"patient_name") ? detailsTable.roleFromRow(1,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(2)
-                                opacity: testName=="No data"?0:1
+                                opacity: testName=="No Data"?0:1
                             }
                             SlotsDetails{
                                 id: slot3
@@ -93,7 +92,7 @@ Item {
                                 testName: detailsTable.roleFromRow(2,"test_name") ? detailsTable.roleFromRow(2,"test_name") : "No Data"
                                 patientName: detailsTable.roleFromRow(2,"patient_name") ? detailsTable.roleFromRow(2,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(3)
-                                opacity: testName=="No data"?0:1
+                                opacity: testName=="No Data"?0:1
                             }
                             SlotsDetails{
                                 id: slot4
@@ -101,7 +100,7 @@ Item {
                                 testName: detailsTable.roleFromRow(3,"test_name") ? detailsTable.roleFromRow(3,"test_name") : "No Data"
                                 patientName: detailsTable.roleFromRow(3,"patient_name") ? detailsTable.roleFromRow(3,"patient_name") : "No Data"
                                 onClicked: requestPatientDetails(4)
-                                opacity: testName=="No data"?0:1
+                                opacity: testName=="No Data"?0:1
                             }
                         }
                         Rectangle{
@@ -115,8 +114,69 @@ Item {
                                 text: "Start Tests"
                                 labelFontSize: 12
                                 butRadius: 4
-                                onClicked:
-                                        requestResults()
+                                onClicked: {
+                                    var data="";
+                                    if(detailsTable.roleFromRow(0,"test_name")){
+                                        data+=detailsTable.roleFromRow(0,"patient_id")+";";
+                                        data+=detailsTable.roleFromRow(0,"patient_name")+";";
+                                        data+=detailsTable.roleFromRow(0,"age")+";";
+                                        data+=detailsTable.roleFromRow(0,"sex")+";";
+                                        data+=detailsTable.roleFromRow(0,"test_name")+";";
+                                        data+="24.5;";
+                                        data+="27.0;"
+                                        data+="4.1 x 10 CFU/ml;";
+                                        data += Qt.formatTime(new Date(),"hh:mm")+";";
+                                        data += Qt.formatDate(new Date(),"dd-MM-yyyy")+";";
+
+                                        resultsTable.addRow(-1,data);
+                                    }
+                                    if(detailsTable.roleFromRow(1,"test_name")){
+                                        data=""
+                                        data+=detailsTable.roleFromRow(1,"patient_id")+";";
+                                        data+=detailsTable.roleFromRow(1,"patient_name")+";";
+                                        data+=detailsTable.roleFromRow(1,"age")+";";
+                                        data+=detailsTable.roleFromRow(1,"sex")+";";
+                                        data+=detailsTable.roleFromRow(1,"test_name")+";";
+                                        data+="24.5;";
+                                        data+="27.0;"
+                                        data+="4.1 x 10 CFU/ml;";
+                                        data += Qt.formatTime(new Date(),"hh:mm")+";";
+                                        data += Qt.formatDate(new Date(),"dd-MM-yyyy")+";";
+
+                                        resultsTable.addRow(-1,data);
+                                    }
+                                    if(detailsTable.roleFromRow(2,"test_name")){
+                                        data="";
+                                        data+=detailsTable.roleFromRow(2,"patient_id")+";";
+                                        data+=detailsTable.roleFromRow(2,"patient_name")+";";
+                                        data+=detailsTable.roleFromRow(2,"age")+";";
+                                        data+=detailsTable.roleFromRow(2,"sex")+";";
+                                        data+=detailsTable.roleFromRow(2,"test_name")+";";
+                                        data+="24.5;";
+                                        data+="27.0;"
+                                        data+="4.1 x 10 CFU/ml;";
+                                        data += Qt.formatTime(new Date(),"hh:mm")+";";
+                                        data += Qt.formatDate(new Date(),"dd-MM-yyyy")+";";
+
+                                        resultsTable.addRow(-1,data);
+                                    }
+                                    if(detailsTable.roleFromRow(3,"test_name")){
+                                        data="";
+                                        data+=detailsTable.roleFromRow(3,"patient_id")+";";
+                                        data+=detailsTable.roleFromRow(3,"patient_name")+";";
+                                        data+=detailsTable.roleFromRow(3,"age")+";";
+                                        data+=detailsTable.roleFromRow(3,"sex")+";";
+                                        data+=detailsTable.roleFromRow(3,"test_name")+";";
+                                        data+="24.5;";
+                                        data+="27.0;"
+                                        data+="4.1 x 10 CFU/ml;";
+                                        data += Qt.formatTime(new Date(),"hh:mm")+";";
+                                        data += Qt.formatDate(new Date(),"dd-MM-yyyy")+";";
+
+                                        resultsTable.addRow(-1,data);
+                                    }
+                                    requestResults()
+                                }
                             }
                             Text {
                                 id: message

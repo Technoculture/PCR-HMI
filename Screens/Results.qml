@@ -67,8 +67,8 @@ Item {
                                     columnSpacing: 4
                                     SlotPatientTab{
                                         id: slot1
-                                        text: "MTB"
-//                                        text: detailsTable.roleFromRow(0,"test_name")
+//                                        text: "MTB"
+                                        text: resultsTable.roleFromRow(0,"test_name")
                                         textColor: "black"
                                         iconSource: "Down_Arrow.png"
                                         tabColor: "#A7F3D0"
@@ -80,8 +80,8 @@ Item {
                                     }
                                     SlotPatientTab{
                                         id: slot2
-                                        text: "Malaria"
-//                                        text: detailsTable.roleFromRow(1,"test_name")
+//                                        text: "Malaria"
+                                        text: resultsTable.roleFromRow(1,"test_name")?resultsTable.roleFromRow(1,"test_name"):""
                                         textColor: "black"
                                         iconSource: "Down_Arrow.png"
                                         opacity: text?1:0
@@ -92,8 +92,8 @@ Item {
                                     }
                                     SlotPatientTab{
                                         id: slot3
-                                        text: detailsTable.roleFromRow(2,"test_name")
-//                                        text: detailsTable.roleFromRow(2,"test_name")
+                                        text: resultsTable.roleFromRow(2,"test_name")?resultsTable.roleFromRow(2,"test_name"):""
+//                                        text: resultsTable.roleFromRow(2,"test_name")
                                         textColor: "black"
                                         iconSource: "Down_Arrow.png"
                                         opacity: text?1:0
@@ -104,8 +104,8 @@ Item {
                                     }
                                     SlotPatientTab{
                                         id: slot4
-                                        text: detailsTable.roleFromRow(3,"test_name")
-//                                        text: detailsTable.roleFromRow(3,"test_name")
+                                        text: resultsTable.roleFromRow(3,"test_name")?resultsTable.roleFromRow(3,"test_name"):""
+//                                        text: resultsTable.roleFromRow(3,"test_name")
                                         textColor: "black"
                                         iconSource: "Down_Arrow.png"
                                         opacity: text?1:0
@@ -161,61 +161,61 @@ Item {
                                         id: title1
                                         width: results.width/2-5
                                         dataContent: "Patient Id"
-                                        dataValueContent: "8732443"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"patient_id")
                                     }
                                     DataValue{
                                         id: title2
                                         width: results.width/2-5
                                         dataContent: "Name"
-                                        dataValueContent: "Nimish Sanghavi"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"patient_name")
                                     }
                                     DataValue{
                                         id: title3
                                         width: results.width/2-5
                                         dataContent: "Age"
-                                        dataValueContent: "20"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"age")
                                     }
                                     DataValue{
                                         id: title4
                                         width: results.width/2-5
                                         dataContent: "Sex"
-                                        dataValueContent: "Male"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"sex")
                                     }
                                     DataValue{
                                         id: title5
                                         width: results.width/2-5
                                         dataContent: "Date"
-                                        dataValueContent: "29-07-2023"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"date")
                                     }
                                     DataValue{
                                         id: title6
                                         width: results.width/2-5
                                         dataContent: "Time"
-                                        dataValueContent: "11:11"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"timestamp")
                                     }
                                     DataValue{
                                         id: title7
                                         width: results.width/2-5
                                         dataContent: "Test Name"
-                                        dataValueContent: "Malaria PF"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"test_name")
                                     }
                                     DataValue{
                                         id: title8
                                         width: results.width/2-5
                                         dataContent: "Control C"
-                                        dataValueContent: "24.5"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"control_c")
                                     }
                                     DataValue{
                                         id: title9
                                         width: results.width/2-5
                                         dataContent: title7.dataValueContent + "\nAmount"
-                                        dataValueContent: "27.0"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"path_amount")
                                     }
                                     DataValue{
                                         id: title10
                                         width: results.width/2-5
                                         dataContent: title7.dataValueContent + "\nDetected"
-                                        dataValueContent: "4.1 x 10 CFU/ml"
+                                        dataValueContent: resultsTable.roleFromRow(number-1,"path_detected")
                                     }
                                 }
                             }
@@ -231,7 +231,7 @@ Item {
                                     id: printButton
                                     width: 70
                                     height: 36
-                                    text: "Save"
+                                    text: "Print"
                                     labelFontSize: 14
                                     butRadius: 4
                                     onClicked: requestTray()
@@ -243,7 +243,14 @@ Item {
                                     text: "Done"
                                     labelFontSize: 14
                                     butRadius: 4
-                                    onClicked: requestTray()
+                                    onClicked: {
+                                        var num=0;
+                                        while(resultsTable.roleFromRow(num,"test_name")){
+                                            detailsTable.removeRow(num);
+                                            resultsTable.removeRow(num);
+                                        }
+                                        requestTray()
+                                    }
                                 }
                             }
                         }

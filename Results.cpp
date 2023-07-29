@@ -53,11 +53,15 @@ void Results::addRow(int row, QString newData)
     else
         newRecord = record(row);
     newRecord.setValue(QStringLiteral("patient_id"), data.at(0));
-    newRecord.setValue(QStringLiteral("control_c"), data.at(1));
-    newRecord.setValue(QStringLiteral("run_status"), data.at(2));
-    newRecord.setValue(QStringLiteral("path_amount"), data.at(3));
-    newRecord.setValue(QStringLiteral("path_detected"), data.at(4));
-    newRecord.setValue(QStringLiteral("timestamp"), data.at(5));
+    newRecord.setValue(QStringLiteral("patient_name"), data.at(1));
+    newRecord.setValue(QStringLiteral("age"), data.at(2));
+    newRecord.setValue(QStringLiteral("sex"), data.at(3));
+    newRecord.setValue(QStringLiteral("test_name"), data.at(4));
+    newRecord.setValue(QStringLiteral("control_c"), data.at(5));
+    newRecord.setValue(QStringLiteral("path_amount"), data.at(6));
+    newRecord.setValue(QStringLiteral("path_detected"), data.at(7));
+    newRecord.setValue(QStringLiteral("timestamp"), data.at(8));
+    newRecord.setValue(QStringLiteral("date"), data.at(9));
 
     if (row == -1)
         insertRecord(row, newRecord);
