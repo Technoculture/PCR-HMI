@@ -35,7 +35,15 @@ Item {
                             textColor: "#64748B"
                             labelFontSize: 16
                             iconSource: "BackArrowIcon.png"
-                            onClicked: requestPatientDetails(1)
+                            onClicked: {
+                                if(!detailsTable.roleFromRow(1,"timestamp"))
+                                    requestPatientDetails(2)
+                                else if(!detailsTable.roleFromRow(2,"timestamp"))
+                                    requestPatientDetails(3)
+                                else if(!detailsTable.roleFromRow(3,"timestamp"))
+                                    requestPatientDetails(4)
+                                else requestPatientDetails(1)
+                            }
                         }
                         Text {
                             id: settings

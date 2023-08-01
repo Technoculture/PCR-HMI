@@ -16,6 +16,14 @@ Item {
     property int number: -1
     property int index: -1
     property string currentState: number.toString()
+    property int count: {
+        if(!detailsTable.roleFromRow(0,"timestamp"))0
+        else if(!detailsTable.roleFromRow(1,"timestamp"))1
+        else if(!detailsTable.roleFromRow(2,"timestamp"))2
+        else if(!detailsTable.roleFromRow(3,"timestamp"))3
+        else 4
+    }
+
     Rectangle{
         anchors.fill: parent
         color: "#A7F3D0"
@@ -84,8 +92,8 @@ Item {
                                 width: 148
                                 text: detailsTable.roleFromRow(0,"test_name")?detailsTable.roleFromRow(0,"test_name"):testName1
                                 textColor: "black"
-                                iconSource: testName1=="Slot 1"?"Down_Arrow.png":"Slot done.png"
-                                tabColor: "#D1FAE5"
+                                iconSource: !detailsTable.roleFromRow(0,"timestamp")?"Down_Arrow.png":"Slot done.png"
+                                tabColor: !detailsTable.roleFromRow(0,"timestamp")?"#D1FAE5":"#A7F3D0"
                                 onClicked: {
                                     slotTabs.state="1"
                                     number=1
@@ -96,7 +104,7 @@ Item {
                                 width: 148
                                 text: detailsTable.roleFromRow(1,"test_name")?detailsTable.roleFromRow(1,"test_name"):testName2
                                 textColor: "black"
-                                iconSource: testName2=="Slot 2"?"Down_Arrow.png":"Slot done.png"
+                                iconSource: !detailsTable.roleFromRow(1,"timestamp")?"Down_Arrow.png":"Slot done.png"
                                 onClicked: {
                                     slotTabs.state="2"
                                     number=2
@@ -107,7 +115,7 @@ Item {
                                 width: 148
                                 text: detailsTable.roleFromRow(2,"test_name")?detailsTable.roleFromRow(2,"test_name"):testName3
                                 textColor: "black"
-                                iconSource: testName3=="Slot 3"?"Down_Arrow.png":"Slot done.png"
+                                iconSource: !detailsTable.roleFromRow(2,"timestamp")?"Down_Arrow.png":"Slot done.png"
                                 onClicked: {
                                     slotTabs.state="3"
                                     number=3
@@ -118,7 +126,7 @@ Item {
                                 width: 148
                                 text: detailsTable.roleFromRow(3,"test_name")?detailsTable.roleFromRow(3,"test_name"):testName4
                                 textColor: "black"
-                                iconSource: testName4=="Slot 4"?"Down_Arrow.png":"Slot done.png"
+                                iconSource: !detailsTable.roleFromRow(3,"timestamp")?"Down_Arrow.png":"Slot done.png"
                                 onClicked: {
                                     slotTabs.state="4"
                                     number=4
@@ -128,31 +136,35 @@ Item {
                         states: [
                             State {
                                 name: "1"
-                                PropertyChanges { target: slot1; tabColor: "#D1FAE5" }
-                                PropertyChanges { target: slot2; tabColor: "#E2E8F0" }
-                                PropertyChanges { target: slot3; tabColor: "#E2E8F0" }
-                                PropertyChanges { target: slot4; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot1; tabColor: !detailsTable.roleFromRow(0,"timestamp")?"#D1FAE5":"#A7F3D0" }
+                                PropertyChanges { target: slot2; tabColor: !detailsTable.roleFromRow(1,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: slot3; tabColor: !detailsTable.roleFromRow(2,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: slot4; tabColor: !detailsTable.roleFromRow(3,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: body; color: !detailsTable.roleFromRow(0,"timestamp")?"#D1FAE5":"#A7F3D0" }
                             },
                             State {
                                 name: "2"
-                                PropertyChanges { target: slot2; tabColor: "#D1FAE5" }
-                                PropertyChanges { target: slot1; tabColor: "#E2E8F0" }
-                                PropertyChanges { target: slot3; tabColor: "#E2E8F0" }
-                                PropertyChanges { target: slot4; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot2; tabColor: !detailsTable.roleFromRow(1,"timestamp")?"#D1FAE5":"#A7F3D0" }
+                                PropertyChanges { target: slot1; tabColor: !detailsTable.roleFromRow(0,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: slot3; tabColor: !detailsTable.roleFromRow(2,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: slot4; tabColor: !detailsTable.roleFromRow(3,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: body; color: !detailsTable.roleFromRow(1,"timestamp")?"#D1FAE5":"#A7F3D0" }
                             },
                             State {
                                 name: "3"
-                                PropertyChanges { target: slot3; tabColor: "#D1FAE5" }
-                                PropertyChanges { target: slot2; tabColor: "#E2E8F0" }
-                                PropertyChanges { target: slot1; tabColor: "#E2E8F0" }
-                                PropertyChanges { target: slot4; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot3; tabColor: !detailsTable.roleFromRow(2,"timestamp")?"#D1FAE5":"#A7F3D0" }
+                                PropertyChanges { target: slot2; tabColor: !detailsTable.roleFromRow(1,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: slot1; tabColor: !detailsTable.roleFromRow(0,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: slot4; tabColor: !detailsTable.roleFromRow(3,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: body; color: !detailsTable.roleFromRow(2,"timestamp")?"#D1FAE5":"#A7F3D0" }
                             },
                             State {
                                 name: "4"
-                                PropertyChanges { target: slot4; tabColor: "#D1FAE5" }
-                                PropertyChanges { target: slot2; tabColor: "#E2E8F0" }
-                                PropertyChanges { target: slot3; tabColor: "#E2E8F0" }
-                                PropertyChanges { target: slot1; tabColor: "#E2E8F0" }
+                                PropertyChanges { target: slot4; tabColor: !detailsTable.roleFromRow(3,"timestamp")?"#D1FAE5":"#A7F3D0" }
+                                PropertyChanges { target: slot2; tabColor: !detailsTable.roleFromRow(1,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: slot3; tabColor: !detailsTable.roleFromRow(2,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: slot1; tabColor: !detailsTable.roleFromRow(0,"timestamp")?"#E2E8F0":"#A7F3D0" }
+                                PropertyChanges { target: body; color: !detailsTable.roleFromRow(3,"timestamp")?"#D1FAE5":"#A7F3D0" }
                             }
                         ]
                     }
@@ -329,7 +341,7 @@ Item {
                     }
                     Text {
                         id: alert
-                        text: ""
+                        text: count+" Patients Added"
                         font.family: "Work Sans Medium"
                         font.pixelSize: 16
                         color: "#475569"
